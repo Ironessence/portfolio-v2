@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "framer-motion": "^8.5.0",
     "gsap": "^3.11.4",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
@@ -16,7 +17,6 @@
     "sass": "^1.57.1",
     "scss": "^0.2.4",
     "sort-by": "^1.2.0",
-    "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
