@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import '../styles/Navigation.styles.scss';
 import menuClosedIcon from '../assets/menu-closed.png';
 import menuOpenIcon from '../assets/menu-open.png';
-import {motion} from 'framer-motion'
-
-
-
-
+import {AnimatePresence, motion} from 'framer-motion'
 
 const Navigation = () => {
   const [showNav, setShowNav] = useState(true);
@@ -35,19 +31,11 @@ const Navigation = () => {
   }, [lastScrollY]);
 
     return (
-        <motion.div className='nav-wrapper' layout data-menuOpen={menuOpen} onClick={() => setMenuOpen(!menuOpen)} >
-           <motion.div 
-           className={showNav ? 'visible-nav' : 'not-visible-nav'}
-           whileTap={{scale: 0.2, transition: {duration: 0.2}}}
-           >
-                <img src={menuOpen ? menuOpenIcon : menuClosedIcon} 
-                id='menu-icon'
-                alt='menu-icon' 
-                />
-                
-            </motion.div>
-            <motion.div layout className='nav-wrapper-open'/>
-        </motion.div>
+       
+           <div className='nav-wrapper'>
+          
+            </div>
+        
     )
 }
 
