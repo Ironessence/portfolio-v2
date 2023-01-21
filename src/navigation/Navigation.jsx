@@ -49,7 +49,7 @@ const Navigation = () => {
  
   const controlNavbar = () => {
     if (typeof window !== 'undefined') { 
-      if (window.scrollY > lastScrollY) {
+      if (window.scrollY > lastScrollY && window.scrollY > 0) {
         setShowNav(false);
         setMenuOpen(false); 
       } else { 
