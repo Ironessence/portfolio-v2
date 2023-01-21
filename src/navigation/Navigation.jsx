@@ -50,7 +50,8 @@ const Navigation = () => {
   const controlNavbar = () => {
     if (typeof window !== 'undefined') { 
       if (window.scrollY > lastScrollY) {
-        setShowNav(false); 
+        setShowNav(false);
+        setMenuOpen(false); 
       } else { 
         setShowNav(true);  
       }

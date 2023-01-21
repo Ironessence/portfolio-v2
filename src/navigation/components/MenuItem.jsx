@@ -33,8 +33,6 @@ const MenuItem = ({animatedMenuItem, title, icon}) => {
                     />}
                     </AnimatePresence>
                     </div>
-                
-                <motion.img src={menuOptionBg} alt='menu-open-bg' className='menu-option-bg' />
                 </motion.div>
     )
 }
