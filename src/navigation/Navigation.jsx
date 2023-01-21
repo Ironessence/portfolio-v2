@@ -3,11 +3,29 @@ import '../styles/Navigation.styles.scss';
 import menuClosedIcon from '../assets/menu-closed.png';
 import menuOpenIcon from '../assets/menu-open.png';
 import {AnimatePresence, motion} from 'framer-motion'
+import MenuItem from "./components/MenuItem";
+import AboutMeIcon from '../assets/about-me-icon.png';
+import ProjectsIcon from '../assets/projects-icon.png';
+import SkillsIcon from '../assets/skills-icon.png';
+import ContactIcon from '../assets/contact-icon.png';
 
 const Navigation = () => {
   const [showNav, setShowNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuItems = [
+    {title: 'About Me',
+    icon: AboutMeIcon,
+    },
+    {title: 'Projects',
+    icon: ProjectsIcon
+    },
+    {title: 'Skills',
+    icon: SkillsIcon
+    },
+    {title: 'Contact',
+    icon: ContactIcon}
+];
 
   const animatedMenu = {
     hidden: { opacity: 0, x: 300 },
@@ -70,9 +88,9 @@ const Navigation = () => {
 
           {/* ICON CONTAINER */}
 
-          <div className='icon-container' onClick={() => setMenuOpen(!menuOpen)}>
+          <motion.div className='icon-container' onClick={() => setMenuOpen(!menuOpen)} whileHover={menuOpen ? {rotateZ: 20} : {scale: 1.05}}>
             <img src={menuOpen ? menuOpenIcon : menuClosedIcon} className='menu-icon' alt='menu-icon' />
-          </div>
+          </motion.div>
 
           {/* OPEN MENU */}
           <AnimatePresence>
@@ -83,20 +101,7 @@ const Navigation = () => {
             animate='show'
             exit={{opacity: 0, x: 600, transition: {duration: 0.4}}}
             >
-                <motion.div className='menu-item-container' variants={animatedMenuItem}
-                whileHover={{width: '115%'}}
-                >
-                <motion.a className='menu-item'>About Me</motion.a>
-                </motion.div>
-                <motion.div className='menu-item-container' variants={animatedMenuItem} whileHover={{width: '115%'}}>
-                <motion.a className='menu-item'>Projects</motion.a>
-                </motion.div>
-                <motion.div className='menu-item-container' variants={animatedMenuItem} whileHover={{width: '115%'}}>
-                <motion.a className='menu-item'>Skills</motion.a>
-                </motion.div>
-                <motion.div className='menu-item-container' variants={animatedMenuItem} whileHover={{width: '115%'}}>
-                <motion.a className='menu-item'>Contact</motion.a>
-                </motion.div>
+                {menuItems.map((item) => <MenuItem animatedMenuItem={animatedMenuItem} title={item.title} icon={item.icon} />)}
             </motion.div>
           }
           </AnimatePresence>
