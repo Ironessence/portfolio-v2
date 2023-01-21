@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {AnimatePresence, motion} from 'framer-motion'
-import menuOptionBg from '../../assets/select-menu-background.png';
 
 const MenuItem = ({animatedMenuItem, title, icon}) => {
 
