@@ -4,10 +4,6 @@ import menuClosedIcon from '../assets/menu-closed.png';
 import menuOpenIcon from '../assets/menu-open.png';
 import {AnimatePresence, motion} from 'framer-motion'
 import MenuItem from "./components/MenuItem";
-import AboutMeIcon from '../assets/about-me-icon.png';
-import ProjectsIcon from '../assets/projects-icon.png';
-import SkillsIcon from '../assets/skills-icon.png';
-import ContactIcon from '../assets/contact-icon.png';
 
 const Navigation = () => {
   const [showNav, setShowNav] = useState(true);
@@ -15,16 +11,16 @@ const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuItems = [
     {title: 'About Me',
-    icon: AboutMeIcon,
+    
     },
     {title: 'Projects',
-    icon: ProjectsIcon
+    
     },
     {title: 'Skills',
-    icon: SkillsIcon
+    
     },
     {title: 'Contact',
-    icon: ContactIcon}
+   }
 ];
 
   const animatedMenu = {
@@ -102,7 +98,7 @@ const Navigation = () => {
             animate='show'
             exit={{opacity: 0, x: 600, transition: {duration: 0.4}}}
             >
-                {menuItems.map((item) => <MenuItem animatedMenuItem={animatedMenuItem} title={item.title} icon={item.icon} />)}
+                {menuItems.map((item) => <MenuItem animatedMenuItem={animatedMenuItem} title={item.title} />)}
             </motion.div>
           }
           </AnimatePresence>
