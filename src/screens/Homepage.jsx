@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useRef } from 'react';
 import { useEffect } from 'react';
+import Header from '../components/Header';
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -32,16 +33,24 @@ const Homepage = () => {
   //   })
   // }, [tl])
 
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+};
+
+useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+    };
+}, []);
+
     return (
         <div className='home-wrapper'>
-        <div className='home-header'>
-          <h1 className='header-title' >
-            <span className='header-title-creative'>
-              Creative
-            </span>
-            Front-End Developer
-          </h1>
-        </div>
+          <Header scrollPosition={scrollPosition} />
         </div>
     )
 }
