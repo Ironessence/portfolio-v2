@@ -5,6 +5,7 @@
     width: 100%;
     justify-content: center;
     position: relative;
+   
     
 }
 
@@ -15,7 +16,9 @@
     text-shadow: 3px 8px 8px rgb(37, 37, 37);
     position: absolute;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 17%;
+    font-size: 5em;
+    transform: skewX(5deg) rotateX(10deg) rotateZ(2deg);
     
 }
 
