@@ -1,68 +1,24 @@
-import { AnimatePresence } from "framer-motion";
-import {motion} from 'framer-motion';
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { useMemo } from "react";
+import React from "react";
 import '../styles/Header.styles.scss';
+import bigIDE from '../assets/IDE filled.png';
+import {motion} from 'framer-motion';
 
-const Header = ({scrollPosition}) => {
-
-    const [attribute, setAttribute] = useState('a creative Front-End Developer');
-
-    const attributesList = useMemo(() => [
-        'a creative Front-End Developer',
-        'a tech enthusiast',
-        'a test 2',
-        'a test 3',
-        'a test 4',
-    ], []);
-
-    const animatedText = {
-        hidden: { opacity: 0 },
-        show: {
-          opacity: 1,
-          transition: {
-            duration: 0.7
-          }
-        },
-        exit: {
-          opacity: 0,
-        }
-      }
-
-    
-
-    useEffect(() => {
-        if (scrollPosition > 0 && scrollPosition < 100) {
-            setAttribute(attributesList[1]);
-        } else if (scrollPosition > 100 && scrollPosition < 200) {
-            setAttribute(attributesList[2]);
-        } else if (scrollPosition > 200 && scrollPosition < 300) {
-            setAttribute(attributesList[3]);
-        } else if (scrollPosition > 300 && scrollPosition < 400) {
-            setAttribute(attributesList[4]);
-        } else if (scrollPosition === 0) {
-            setAttribute(attributesList[0]);
-        }
-    }, [attributesList, scrollPosition])
+const Header = ({titleRef, headerRef, ideRef}) => {
 
     return (
-        <div className='home-header'>
-            <h1 className='header-text'>
-                Hello! <br />
-                I'm Alex,
-            </h1>
-            <AnimatePresence>
-            <motion.h1 
-            className='header-changing-text'
-            key={attribute}
-            variants={animatedText}
-            animate={'show'}
-            initial={'hidden'}
-            exit={'exit'}
-            >{attribute}
-            </motion.h1>
-            </AnimatePresence>
+        <div className='home-header' ref={headerRef}>
+           
+            <h1 className="header-title" ref={titleRef}>Hi there! <br />I'm Alex, <br /> a <span className='header-title-special'>Creative </span>Front-End Developer</h1>
+            <motion.img 
+            src={bigIDE} 
+            alt="IDE" 
+            className='IDE' 
+            ref={ideRef}
+            initial={{scale: 0.1, rotateZ: 20, opacity: 0, y: 200, transition: {duration: 1, type: 'just'}}}
+            animate={{scale: 1, rotateZ: 0, opacity: 1, y: 0, transition: {duration: 1, delay: 1, type: 'spring'}}}
+            />
+            
+            
         </div>
     )
 }

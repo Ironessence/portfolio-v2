@@ -3,21 +3,30 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 100vh;
     justify-content: center;
+    position: relative;
+    
 }
 
-
-
-.header-text {
-    text-align: center;
+.header-title {
     color: white;
+    letter-spacing: 1.5px;
+    z-index: 2;
+    text-shadow: 3px 8px 8px rgb(37, 37, 37);
+    position: absolute;
+    text-align: center;
+    margin-top: 100px;
+    
 }
 
-.header-changing-text {
-    background: -webkit-linear-gradient(#43c3ff, #485aff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: 0.5s ease all;
+.header-title-special {
+    color: rgba(65, 131, 255, 0.918);
+}
+
+.IDE {
+    width: 50vw;
+    box-shadow: 2px 2px 8px 6px rgb(34, 34, 34);
+    border-radius: 25px;
+    margin-top: 20vh;
+     
 }
