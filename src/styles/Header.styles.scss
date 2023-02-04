@@ -10,20 +10,37 @@
 }
 
 .header-title {
-    color: white;
+    background: -webkit-linear-gradient(#a3a3a396, #fdfdfdce);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     letter-spacing: 1.5px;
     z-index: 2;
-    text-shadow: 3px 8px 8px rgb(37, 37, 37);
     position: absolute;
     text-align: center;
-    margin-top: 17%;
-    font-size: 5em;
-    transform: skewX(5deg) rotateX(10deg) rotateZ(2deg);
+    margin-top: 30vh;
+    font-size: 7em;
+    transform: skewX(5deg) rotateX(7deg) rotateZ(2deg);
+    @media only screen and (max-width: 1000px) {
+        margin-top: 30vh;
+        font-size: 4em;
+    }
     
 }
 
 .header-title-special {
-    color: rgba(65, 131, 255, 0.918);
+    background: -webkit-linear-gradient(#48d2ebaf, #2480f7ce);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header-title-scroll {
+    color: white;
+    font-size: 2em;
+    font-weight: 300;
+    z-index: 0;
+    @media only screen and (max-width: 1000px) {
+        font-size: 1em;
+    }
 }
 
 .IDE {
@@ -31,5 +48,6 @@
     box-shadow: 2px 2px 8px 6px rgb(34, 34, 34);
     border-radius: 25px;
     margin-top: 20vh;
+    z-index: 1;
      
 }
