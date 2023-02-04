@@ -1,41 +1,52 @@
 import React from 'react';
-import '../styles/Header.styles.scss';
-import bigIDE from '../assets/IDE filled.png';
-import { motion } from 'framer-motion';
+import styled from 'styled-components';
+import headerBG from '../assets/header-bg.jpg';
+import ParticlesComponent from './ParticlesComponent';
 
-const Header = ({ ideRef, textRef, specialRef, scrollDownText }) => {
+const Header = () => {
   return (
-    <div className="home-header">
-      <h1
-        className="header-title"
-        ref={textRef}
-      >
-        Hi there! <br />
-        I'm <span className="header-title-special">Alex</span>, <br /> a{' '}
-        <span
-          className="header-title-special"
-          ref={specialRef}
-        >
-          Creative{' '}
-        </span>
-        Front-End Developer
-      </h1>
-
-      <img
-        src={bigIDE}
-        alt="IDE"
-        className="IDE"
-        ref={ideRef}
+    <Wrapper className="home-header">
+      <Title>
+        <Bold>Passionate</Bold> Front-End Developer
+      </Title>
+      <ImageBG
+        src={headerBG}
+        alt="bg-header"
       />
-
-      <h1
-        className="header-title-scroll"
-        ref={scrollDownText}
-      >
-        Scroll down to enter my small world
-      </h1>
-    </div>
+      <ParticlesComponent />
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  position: relative;
+`;
+
+const ImageBG = styled.img`
+  height: 300vh;
+  margin-right: 50vw;
+  z-index: 0;
+  position: absolute;
+  opacity: 0.5;
+`;
+
+const Title = styled.h1`
+  font-size: 4em;
+  color: white;
+  z-index: 1;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  margin-top: 20vh;
+  text-shadow: 3px 3px 6px rgb(38, 38, 38);
+`;
+
+const Bold = styled.span`
+  font-weight: 500;
+`;
 
 export default Header;
