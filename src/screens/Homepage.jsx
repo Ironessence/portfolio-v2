@@ -26,7 +26,6 @@ const Homepage = () => {
           end: '+=5000',
           scrub: true,
           pin: true,
-          markers: true, //TODO: remember to delete this
         },
       });
     }, containerRef);
@@ -55,10 +54,9 @@ const Main = styled.div`
     rgba(46, 44, 44, 1) 51%,
     rgba(0, 0, 0, 1) 100%
   );
-  width: 100%;
   height: 700vh;
-  // overflow: hidden;
   position: relative;
+  overscroll-behavior: none;
 `;
 
 const ImageBG = styled.img`

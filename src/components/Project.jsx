@@ -1,44 +1,66 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Project = ({ projectData }) => {
-  console.log(projectData);
+const Project = ({
+  name,
+  intro,
+  startImage,
+  image1,
+  image1width,
+  middleText,
+  image2,
+  image3,
+  image3width,
+  endText,
+  link,
+}) => {
   return (
-    <Container>
-      <Name>{projectData.name}</Name>
+    <Container className="proj-container">
+      <Name>{name}</Name>
       <IntroContainer>
-        <Intro>{projectData.intro}</Intro>
+        <Intro>{intro}</Intro>
       </IntroContainer>
-      <StartCard
-        src={require(`../assets/${projectData.startImage}`)}
-        alt="start-image"
-      />
-      <Image1
-        src={require(`../assets/${projectData.image1}`)}
-        alt="image1"
-      />
-      <MiddleText>{projectData.middleText}</MiddleText>
-      <Image2
-        src={require(`../assets/${projectData.image2}`)}
-        alt="image2"
-      />
+      {startImage && (
+        <StartCard
+          src={require(`../assets/${startImage}`)}
+          alt="start-image"
+        />
+      )}
+      {image1 && (
+        <Image1
+          src={require(`../assets/${image1}`)}
+          alt="image1"
+          width={image1width}
+        />
+      )}
+      {middleText && <MiddleText>{middleText}</MiddleText>}
+      {image2 && (
+        <Image2
+          src={require(`../assets/${image2}`)}
+          alt="image2"
+        />
+      )}
+      {image3 && (
+        <Image3
+          src={require(`../assets/${image3}`)}
+          alt="image3"
+          width={image3width}
+        />
+      )}
 
-      <Image3
-        src={require(`../assets/${projectData.image3}`)}
-        alt="image3"
-      />
       <EndContainer>
-        <EndText>{projectData.endText}</EndText>
-        <ActionWrapper>
-          <Action href={projectData.link}>View Details</Action>
-        </ActionWrapper>
+        <EndText>{endText}</EndText>
+        {link && (
+          <ActionWrapper>
+            <Action href={link}>View Details</Action>
+          </ActionWrapper>
+        )}
       </EndContainer>
     </Container>
   );
 };
 
 const Container = styled.div`
-  width: 100%;
   display: flex;
   align-items: center;
   z-index: 1;
@@ -47,7 +69,7 @@ const Container = styled.div`
 const Name = styled.h1`
   color: white;
   text-shadow: 2px 2px 2px black;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   align-self: flex-start;
   padding-top: 4vh;
   padding-left: 10%;
@@ -69,6 +91,7 @@ const Intro = styled.h2`
   text-shadow: 2px 2px 2px black;
   letter-spacing: 1px;
   width: 100%;
+  font-weight: 400;
 `;
 
 const StartCard = styled.img`
@@ -80,7 +103,7 @@ const StartCard = styled.img`
 `;
 
 const Image1 = styled.img`
-  width: 300px;
+  width: ${(props) => (props.width ? props.width : '700px')};
   border-radius: 25px;
   margin-right: -20px;
   box-shadow: 2px 3px 3px 2px rgb(64, 64, 64);
@@ -101,10 +124,11 @@ const MiddleText = styled.h3`
   min-width: 500px;
   margin-left: -20px;
   z-index: 1;
+  font-weight: 400;
 `;
 
 const Image3 = styled.img`
-  width: 300px;
+  width: ${(props) => (props.width ? props.width : '700px')};
   border-radius: 25px;
   margin-left: -100px;
   box-shadow: 2px 3px 3px 2px rgb(64, 64, 64);
@@ -131,6 +155,7 @@ const EndText = styled.h3`
   min-width: 500px;
   margin-left: -50px;
   z-index: 1;
+  font-weight: 400;
 `;
 
 const ActionWrapper = styled.div`
