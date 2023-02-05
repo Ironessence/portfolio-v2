@@ -6,30 +6,33 @@ const Project = ({ projectData }) => {
   return (
     <Container>
       <Name>{projectData.name}</Name>
-      <Intro>{projectData.intro}</Intro>
+      <IntroContainer>
+        <Intro>{projectData.intro}</Intro>
+      </IntroContainer>
       <StartCard
         src={require(`../assets/${projectData.startImage}`)}
         alt="start-image"
       />
       <Image1
-        src={projectData.image1}
+        src={require(`../assets/${projectData.image1}`)}
         alt="image1"
       />
+      <MiddleText>{projectData.middleText}</MiddleText>
       <Image2
-        src={projectData.image2}
+        src={require(`../assets/${projectData.image2}`)}
         alt="image2"
       />
-      <MiddleText>{projectData.middleText}</MiddleText>
+
       <Image3
-        src={projectData.image3}
+        src={require(`../assets/${projectData.image3}`)}
         alt="image3"
       />
-      <Image4
-        src={projectData.image4}
-        alt="image4"
-      />
-      <EndText>{projectData.endText}</EndText>
-      <Action href={projectData.link}>View Details</Action>
+      <EndContainer>
+        <EndText>{projectData.endText}</EndText>
+        <ActionWrapper>
+          <Action href={projectData.link}>View Details</Action>
+        </ActionWrapper>
+      </EndContainer>
     </Container>
   );
 };
@@ -41,27 +44,111 @@ const Container = styled.div`
   z-index: 1;
 `;
 
-const Name = styled.h1``;
-
-const Intro = styled.h2``;
-
-const StartCard = styled.img`
-  width: 400px;
-  height: 250px;
+const Name = styled.h1`
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  letter-spacing: 1px;
+  align-self: flex-start;
+  padding-top: 4vh;
+  padding-left: 10%;
+  font-size: 3rem;
 `;
 
-const Image1 = styled.img``;
+const IntroContainer = styled.div`
+  min-width: 500px;
+  max-width: 550px;
+  align-self: center;
+  margin-left: -20%;
+  z-index: 1;
+  margin-top: -4vh;
+`;
 
-const Image2 = styled.img``;
+const Intro = styled.h2`
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  letter-spacing: 1px;
+  width: 100%;
+`;
 
-const MiddleText = styled.h3``;
+const StartCard = styled.img`
+  width: 700px;
+  margin-left: -70px;
+  border-radius: 35px;
+  box-shadow: 3px 2px 3px 2px rgb(64, 64, 64);
+  margin-right: 30px;
+`;
 
-const Image3 = styled.img``;
+const Image1 = styled.img`
+  width: 300px;
+  border-radius: 25px;
+  margin-right: -20px;
+  box-shadow: 2px 3px 3px 2px rgb(64, 64, 64);
+`;
 
-const Image4 = styled.img``;
+const Image2 = styled.img`
+  width: 800px;
+  margin-top: 15vh;
+  box-shadow: 2px 3px 3px 2px rgb(64, 64, 64);
+  margin-left: -50px;
+`;
 
-const EndText = styled.h3``;
+const MiddleText = styled.h3`
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  letter-spacing: 1px;
+  min-width: 500px;
+  margin-left: -20px;
+  z-index: 1;
+`;
 
-const Action = styled.a``;
+const Image3 = styled.img`
+  width: 300px;
+  border-radius: 25px;
+  margin-left: -100px;
+  box-shadow: 2px 3px 3px 2px rgb(64, 64, 64);
+`;
+
+const Image4 = styled.img`
+  width: 700px;
+  align-self: flex-end;
+  margin-bottom: 50px;
+  margin-left: -20px;
+  box-shadow: 2px 3px 3px 2px rgb(64, 64, 64);
+`;
+
+const EndContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const EndText = styled.h3`
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  letter-spacing: 1px;
+  min-width: 500px;
+  margin-left: -50px;
+  z-index: 1;
+`;
+
+const ActionWrapper = styled.div`
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+`;
+
+const Action = styled.a`
+  text-align: center;
+  text-decoration: none;
+  color: white;
+`;
 
 export default Project;

@@ -57,7 +57,7 @@ const Main = styled.div`
   );
   width: 100%;
   height: 700vh;
-  overflow: hidden;
+  // overflow: hidden;
   position: relative;
 `;
 
