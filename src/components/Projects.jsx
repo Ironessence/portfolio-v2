@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 import Project from './Project';
 import projectsData from '../utils/projectsData';
@@ -9,31 +9,52 @@ gsap.registerPlugin(ScrollTrigger);
 const Projects = () => {
   const [sections, setSections] = useState(null);
   const projects = useRef(null);
+  const titleRef = useRef(null);
+  const [titleWrapperHeight, setTitleWrapperHeight] = useState(0);
+  const desktopScreen = window.matchMedia('screen and (min-width: 1000px');
 
   useEffect(() => {
     setSections(gsap.utils.toArray('.proj-container'));
   }, []);
 
   useEffect(() => {
-    console.log('SECTIONS:', sections);
-  }, [sections]);
+    setTitleWrapperHeight(titleRef.current.clientHeight);
+  }, []);
+
+  useEffect(() => {
+    console.log(desktopScreen);
+  }, [desktopScreen]);
 
   useEffect(() => {
     if (sections !== null) {
       let ctx = gsap.context(() => {
         //INSIDE CONTEXT >
-        gsap.to(sections, {
-          xPercent: -150 * sections.length,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: projects.current,
-            start: '-100 top',
-            scrub: 1,
-            pin: true,
-            markers: true,
-            end: '+=9000',
-          },
-        });
+        if (desktopScreen.matches) {
+          gsap.to(sections, {
+            xPercent: -100 * (sections.length - 1),
+            ease: 'none',
+            scrollTrigger: {
+              trigger: projects.current,
+              start: '-60 top',
+              scrub: 1,
+              pin: true,
+              snap: 1 / (sections.length - 1),
+              markers: true,
+              end: '+=2000',
+            },
+          });
+          //HANDLE ANIMATION FOR PROJECTS FOR TABLET / MOBILE
+        } else {
+          gsap.utils.toArray(sections).forEach((section, index) => {
+            ScrollTrigger.create({
+              trigger: section,
+              start: 'top top',
+
+              pin: true,
+              pinSpacing: false,
+            });
+          });
+        }
       }, projects);
       //Clean-Up
       return () => ctx.revert();
@@ -45,7 +66,7 @@ const Projects = () => {
       className="projects-container"
       ref={projects}
     >
-      <TitleWrapper>
+      <TitleWrapper ref={titleRef}>
         <Circle>
           <Number>01</Number>
         </Circle>
@@ -55,18 +76,8 @@ const Projects = () => {
         {projectsData.map((info) => (
           <Project
             name={info.name}
-            intro={info.intro}
-            startImage={info.startImage}
-            image1={info.image1}
-            image1width={info.image1width}
-            middleText={info.middleText}
-            image2={info.image2}
-            image3={info.image3}
-            image3width={info.image3width}
-            image4={info.image4}
-            endText={info.endText}
-            link={info.link}
             key={info.key}
+            titleHeight={titleWrapperHeight}
           />
         ))}
       </ProjectsWrapper>
@@ -78,6 +89,7 @@ const Container = styled.div`
   overscroll-behavior: none;
   margin-top: 500px;
   opacity: 1;
+  height: 95vh;
 `;
 
 const TitleWrapper = styled.div`
@@ -85,6 +97,7 @@ const TitleWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 50px;
 `;
 
 const Circle = styled.div`
@@ -119,11 +132,12 @@ const Title = styled.h1`
 const ProjectsWrapper = styled.div`
   overscroll-behavior: none;
   flex-wrap: nowrap;
-  //gap: 200px;
   opacity: 1;
   height: '100%';
   display: flex;
-  //flex-wrap: nowrap;
+  @media only screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
 `;
 
 export default Projects;

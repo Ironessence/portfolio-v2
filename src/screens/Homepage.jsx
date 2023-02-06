@@ -23,7 +23,7 @@ const Homepage = () => {
         scrollTrigger: {
           trigger: bgRef.current,
           start: '1 top',
-          end: '+=5000',
+          end: '+=3000',
           scrub: true,
           pin: true,
         },
