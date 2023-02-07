@@ -1,13 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import useWindowDimensions from '../utils/getWindowDimensions';
 
-const Project = ({ name, titleHeight }) => {
+const Project = ({
+  name,
+  intro,
+  startImage,
+  image1,
+  image1Width,
+  image2,
+  skills,
+  image3,
+  image3width,
+  image4,
+  endText,
+  link,
+  titleHeight,
+}) => {
   const { height: heightMobile } = useWindowDimensions();
-
-  useEffect(() => {
-    console.log('height is:', heightMobile);
-  }, [heightMobile]);
 
   return (
     <Container
@@ -15,8 +25,22 @@ const Project = ({ name, titleHeight }) => {
       height={titleHeight}
       customHeight={heightMobile}
     >
-      <ProjectName>{name}</ProjectName>
-      <DetailsContainer></DetailsContainer>
+      <DetailsContainer>
+        <ProjectName>{name}</ProjectName>
+        <Divider />
+        <SkillsContainer>
+          {skills.map((skill) => (
+            <Chip>
+              <Skill>{skill}</Skill>
+            </Chip>
+          ))}
+        </SkillsContainer>
+        <Intro>{intro}</Intro>
+      </DetailsContainer>
+
+      <ImageContainer>
+        <Image src={require(`../assets/${startImage}`)} />
+      </ImageContainer>
     </Container>
   );
 };
@@ -29,29 +53,116 @@ const Container = styled.div`
   background: rgb(135, 135, 135);
   background: linear-gradient(218deg, rgba(135, 135, 135, 0.2) 0%, rgba(226, 226, 226, 0.2) 100%);
   border-radius: 25px;
-
   box-shadow: 0 8px 16px 2px rgba(27, 27, 27, 0.8);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
-
   @media only screen and (max-width: 1000px) {
     flex-direction: column;
     height: 100vh;
   }
 `;
 
-const ProjectName = styled.h1`
-  text-align: center;
-  color: white;
-  flex: 1;
-  @media only screen and (max-width: 1000px) {
-    flex: 0;
-    align-self: flex-start;
+const DetailsContainer = styled.div`
+  min-height: 40%;
+  max-height: 40%;
+  display: flex;
+  flex-direction: column;
+  @media only screen and (min-width: 1000px) {
+    max-width: 40%;
+    min-height: 100%;
+    max-height: 100%;
   }
 `;
 
-const DetailsContainer = styled.div`
-  flex: 2;
+const ProjectName = styled.h1`
+  text-align: center;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 2px 2px rgb(27, 27, 27);
+  @media only screen and (max-width: 1000px) {
+    flex: 0;
+  }
+`;
+
+const Divider = styled.div`
+  width: 80%;
+  height: 2px;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  @media only screen and (min-width: 1000px) {
+    width: 80%;
+    min-height: 2px;
+    max-height: 2px;
+  }
+  @media only screen and (max-width: 500px) {
+    min-height: 2px;
+    max-height: 2px;
+  }
+`;
+
+const SkillsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  max-width: 70%;
+  margin: 10px 0px;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-self: center;
+  @media only screen and (max-width: 500px) {
+    max-width: 100%;
+  }
+`;
+
+const Chip = styled.div`
+  padding: 4px 6px;
+  border: 1px solid white;
+  border-radius: 25px;
+  box-shadow: 2px 2px 3px 2px rgb(27, 27, 27);
+`;
+
+const Skill = styled.div`
+  color: white;
+  letter-spacing: 0.5px;
+`;
+
+const Intro = styled.h2`
+  color: white;
+  width: 60%;
+  margin-left: 10%;
+  margin-top: 30px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  @media only screen and (min-width: 1000px) {
+    margin-top: auto;
+    margin-bottom: 50px;
+  }
+  @media only screen and (max-width: 500px) {
+    font-size: 14px;
+    width: 90%;
+    margin-left: 0px;
+    margin-top: 10px;
+    text-align: center;
+    align-self: center;
+  }
+`;
+
+const ImageContainer = styled.div`
+  min-height: 60%;
+`;
+
+const Image = styled.img`
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 25px 25px 0px 0px;
+  @media only screen and (min-width: 1000px) {
+    border-radius: 0px 25px 25px 0px;
+  }
+  @media only screen and (max-width: 500px) {
+    border-radius: 25px;
+  }
 `;
 
 export default Project;

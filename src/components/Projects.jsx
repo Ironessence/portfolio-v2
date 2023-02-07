@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import Project from './Project';
 import projectsData from '../utils/projectsData';
@@ -22,8 +22,8 @@ const Projects = () => {
   }, []);
 
   useEffect(() => {
-    console.log(desktopScreen);
-  }, [desktopScreen]);
+    console.log(projectsData.map((proj) => proj.skills));
+  }, []);
 
   useEffect(() => {
     if (sections !== null) {
@@ -75,7 +75,6 @@ const Projects = () => {
               scrub: true,
             },
           })
-
           .to(sections[1], {
             scrollTrigger: {
               trigger: sections[1],
@@ -115,6 +114,17 @@ const Projects = () => {
         {projectsData.map((info) => (
           <Project
             name={info.name}
+            intro={info.intro}
+            startImage={info.startImage}
+            image1={info.image1}
+            image1width={info.image1width}
+            image2={info.image2}
+            skills={info.skills}
+            image3={info.image3}
+            image3width={info.image3width}
+            image4={info.image4}
+            endText={info.endText}
+            link={info.link}
             key={info.key}
             titleHeight={titleWrapperHeight}
           />
@@ -136,6 +146,9 @@ const TitleWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media only screen and (max-width: 500px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const Circle = styled.div`
@@ -172,6 +185,9 @@ const Title = styled.h1`
   letter-spacing: 1px;
   z-index: 1;
   margin-left: -50px;
+  @media only screen and (max-width: 500px) {
+    font-size: 3rem;
+  }
 `;
 
 const ProjectsWrapper = styled.div`
@@ -184,6 +200,9 @@ const ProjectsWrapper = styled.div`
   display: flex;
   @media only screen and (max-width: 1000px) {
     flex-direction: column;
+  }
+  @media only screen and (max-width: 500px) {
+    padding: 0px;
   }
 `;
 
