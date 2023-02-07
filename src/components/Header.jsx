@@ -7,7 +7,7 @@ import ParticlesComponent from './ParticlesComponent';
 const Header = () => {
   return (
     <Wrapper className="home-header">
-      <Title>Software Engineering</Title>
+      <Title>SOFTWARE ENGINEERING</Title>
       <Subtitle>
         with a passion for <Bold>Front-End</Bold>
       </Subtitle>
@@ -33,14 +33,19 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 5em;
-  color: white;
+  font-size: 8em;
+
   z-index: 1;
-  font-weight: 300;
-  letter-spacing: 1.5px;
+  font-weight: 700;
+  letter-spacing: -3px;
   margin-top: 30vh;
-  text-shadow: 3px 3px 6px rgb(38, 38, 38);
   text-align: center;
+  text-shadow: 2px 2px 2px white;
+  background: -webkit-linear-gradient(#9979a3, #66344f, #463469);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  // color: white;
+  // text-shadow: 3px 3px 3px rgb(27, 27, 27);
 `;
 
 const Subtitle = styled.h3`

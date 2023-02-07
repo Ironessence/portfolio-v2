@@ -35,31 +35,70 @@ const Projects = () => {
             ease: 'none',
             scrollTrigger: {
               trigger: projects.current,
-              start: '-60 top',
-              scrub: 1,
-              pin: true,
-              snap: 1 / (sections.length - 1),
-              markers: true,
-              end: '+=2000',
-            },
-          });
-          //HANDLE ANIMATION FOR PROJECTS FOR TABLET / MOBILE
-        } else {
-          gsap.utils.toArray(sections).forEach((section, index) => {
-            ScrollTrigger.create({
-              trigger: section,
               start: 'top top',
-
+              scrub: true,
               pin: true,
               pinSpacing: false,
-            });
+              markers: true,
+              end: '+=4000',
+            },
           });
+
+          //HANDLE ANIMATION FOR PROJECTS FOR TABLET / MOBILE
         }
       }, projects);
       //Clean-Up
       return () => ctx.revert();
     }
-  }, [sections]);
+  }, [desktopScreen.matches, sections]);
+
+  useEffect(() => {
+    if (sections !== null && !desktopScreen.matches) {
+      let ctx = gsap.context(() => {
+        gsap
+          .timeline()
+          .to(sections[0], {
+            scrollTrigger: {
+              trigger: sections[0],
+              start: '1 top',
+              scrub: true,
+              pin: true,
+              pinSpacing: false,
+            },
+          })
+          .to(sections[0], {
+            opacity: 0,
+            scale: 0.8,
+            scrollTrigger: {
+              trigger: sections[0],
+              start: 'top top',
+              scrub: true,
+            },
+          })
+
+          .to(sections[1], {
+            scrollTrigger: {
+              trigger: sections[1],
+              start: '1 top',
+              scrub: true,
+              pin: true,
+              pinSpacing: false,
+            },
+          })
+          .to(sections[1], {
+            opacity: 0,
+            scale: 0.8,
+            scrollTrigger: {
+              trigger: sections[1],
+              start: 'top top',
+              scrub: true,
+            },
+          });
+      }, projects);
+
+      return () => ctx.revert();
+    }
+  }, [desktopScreen.matches, sections]);
 
   return (
     <Container
@@ -70,7 +109,7 @@ const Projects = () => {
         <Circle>
           <Number>01</Number>
         </Circle>
-        <Title>Projects</Title>
+        <Title>PROJECTS</Title>
       </TitleWrapper>
       <ProjectsWrapper>
         {projectsData.map((info) => (
@@ -97,18 +136,24 @@ const TitleWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 50px;
 `;
 
 const Circle = styled.div`
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background-color: rgba(141, 52, 173, 0.6);
+  background: rgb(70, 52, 105);
+  background: linear-gradient(
+    218deg,
+    rgba(70, 52, 105, 0.8636363636363636) 0%,
+    rgba(102, 52, 79, 0.8397129186602871) 49%,
+    rgba(153, 121, 163, 0.8373205741626795) 100%
+  );
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0.8;
 `;
 
 const Number = styled.h2`
@@ -123,7 +168,7 @@ const Title = styled.h1`
   font-size: 5rem;
   text-align: center;
   color: white;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 1px;
   z-index: 1;
   margin-left: -50px;
@@ -131,9 +176,11 @@ const Title = styled.h1`
 
 const ProjectsWrapper = styled.div`
   overscroll-behavior: none;
+  padding: 0px 50px;
   flex-wrap: nowrap;
   opacity: 1;
   height: '100%';
+  gap: 100px;
   display: flex;
   @media only screen and (max-width: 1000px) {
     flex-direction: column;

@@ -10,10 +10,10 @@ const Navigation = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuItems = [
-    { title: 'About Me' },
-    { title: 'Projects' },
-    { title: 'Skills' },
-    { title: 'Contact' },
+    { title: '01 _ABOUT ME' },
+    { title: '02 _PROJECTS' },
+    { title: '03 _SKILLS' },
+    { title: '04 _CONTACT' },
   ];
 
   const animatedMenu = {
@@ -78,7 +78,7 @@ const Navigation = () => {
             {/* LOGO CONTAINER */}
 
             <div className="logo-container">
-              <h1 className="logo">Alexandru Dincă</h1>
+              <h1 className="logo">ALEXANDRU DINCĂ</h1>
             </div>
 
             {/* ICON CONTAINER */}

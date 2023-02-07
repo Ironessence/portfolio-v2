@@ -23,7 +23,7 @@ const Homepage = () => {
         scrollTrigger: {
           trigger: bgRef.current,
           start: '1 top',
-          end: '+=3000',
+          end: '+=6000',
           scrub: true,
           pin: true,
         },
@@ -57,6 +57,7 @@ const Main = styled.div`
   height: 700vh;
   position: relative;
   overscroll-behavior: none;
+  overflow: hidden;
 `;
 
 const ImageBG = styled.img`
