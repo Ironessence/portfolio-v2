@@ -39,6 +39,9 @@ const Project = ({
       </DetailsContainer>
 
       <ImageContainer>
+        <Circle>
+          <CircleText>View details</CircleText>
+        </Circle>
         <Image src={require(`../assets/${startImage}`)} />
       </ImageContainer>
     </Container>
@@ -148,21 +151,51 @@ const Intro = styled.h2`
   }
 `;
 
-const ImageContainer = styled.div`
-  min-height: 60%;
-`;
-
 const Image = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
+  transition: 0.8s ease;
   border-radius: 25px 25px 0px 0px;
+  opacity: 0;
   @media only screen and (min-width: 1000px) {
     border-radius: 0px 25px 25px 0px;
   }
   @media only screen and (max-width: 500px) {
     border-radius: 25px;
   }
+`;
+
+const ImageContainer = styled.div`
+  min-height: 60%;
+  position: relative;
+  &:hover ${Image} {
+    opacity: 0.4;
+  }
+`;
+
+const Circle = styled.div`
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 38%;
+  z-index: 999;
+  cursor: pointer;
+  transition: 0.7s ease all;
+`;
+
+const CircleText = styled.h3`
+  color: white;
+  text-align: center;
+  transition: 0.7s ease all;
 `;
 
 export default Project;
