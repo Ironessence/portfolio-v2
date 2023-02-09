@@ -53,12 +53,11 @@ const Container = styled.div`
   display: flex;
   min-width: 80%;
   height: ${(props) => (props.height ? `calc(100vh - ${props.height}px - 10px)` : '65vh')};
-  background: rgb(135, 135, 135);
-  background: linear-gradient(218deg, rgba(135, 135, 135, 0.2) 0%, rgba(226, 226, 226, 0.2) 100%);
-  border-radius: 25px;
-  box-shadow: 0 8px 16px 2px rgba(27, 27, 27, 0.8);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 16px 4 rgb(27, 27, 27);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 10px;
   @media only screen and (max-width: 1000px) {
     flex-direction: column;
     height: 100vh;
@@ -156,7 +155,7 @@ const Image = styled.img`
   width: 100%;
   object-fit: cover;
   transition: 0.8s ease;
-  border-radius: 25px 25px 0px 0px;
+  border-radius: 10px 10px 0px 0px;
   opacity: 0;
   @media only screen and (min-width: 1000px) {
     border-radius: 0px 25px 25px 0px;
