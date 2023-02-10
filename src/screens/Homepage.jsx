@@ -1,49 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import Header from '../components/Header';
+
 import styled from 'styled-components';
-import headerBG from '../assets/header-bg.jpg';
-import Projects from '../components/Projects';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Homepage = () => {
-  const bgRef = useRef(null);
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      //INSIDE CONTEXT >
-      gsap.timeline().to(bgRef.current, {
-        x: -900,
-        y: 600,
-        rotateZ: -10,
-        scale: 5,
-        duration: 10,
-        scrollTrigger: {
-          trigger: bgRef.current,
-          start: '1 top',
-          end: '+=6000',
-          scrub: true,
-          pin: true,
-        },
-      });
-    }, containerRef);
-    //Clean-Up
-    return () => ctx.revert();
-  }, []);
-
-  return (
-    <Main ref={containerRef}>
-      <ImageBG
-        ref={bgRef}
-        src={headerBG}
-        alt="bg-header"
-      />
-      <Header />
-      <Projects />
-    </Main>
-  );
+  return <Main></Main>;
 };
 
 const Main = styled.div`
@@ -54,18 +18,8 @@ const Main = styled.div`
     rgba(46, 44, 44, 1) 51%,
     rgba(0, 0, 0, 1) 100%
   );
-  height: 700vh;
-  position: relative;
-  overscroll-behavior: none;
-  overflow: hidden;
-`;
-
-const ImageBG = styled.img`
   height: 100vh;
-  transform: scale(3);
-  right: 50vw;
-  position: absolute;
-  opacity: 0.7;
+  overflow: hidden;
 `;
 
 export default Homepage;
