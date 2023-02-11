@@ -5,7 +5,6 @@ import gsap from 'gsap';
 export function Model(props) {
   const { nodes, materials } = useGLTF('/letterA.gltf');
   const aRef = useRef(null);
-
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       //INSIDE CONTEXT >
@@ -23,7 +22,6 @@ export function Model(props) {
     //Clean-Up
     return () => ctx.revert();
   }, []);
-
   return (
     <group
       {...props}
@@ -32,7 +30,7 @@ export function Model(props) {
     >
       <mesh
         geometry={nodes['3D_Text_-_A'].geometry}
-        material={materials['Light Aroma']}
+        material={materials['Cold Spring']}
         position={[-1.85, -2, -1]}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.1}

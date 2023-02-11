@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react';
+import React, { Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -11,15 +11,28 @@ gsap.registerPlugin(ScrollTrigger);
 const Rig = () => {
   const { camera, mouse } = useThree();
   const vec = new THREE.Vector3();
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   //Animation for camera to enter through the letter
-  useEffect(() => {
+  useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       //INSIDE CONTEXT >
       gsap.timeline().to(camera.position, {
-        z: 4.2,
+        z: 4,
         y: 0,
-        x: 0,
+        x: 0.15,
         duration: 1.5,
         scrollTrigger: {
           trigger: '.hero',
@@ -30,29 +43,23 @@ const Rig = () => {
         },
       });
     }, '.hero');
+
     //Clean-Up
     return () => ctx.revert();
   }, []);
 
   return useFrame(() => {
-    camera.position.lerp(vec.set(mouse.x * 1, mouse.y * 1, camera.position.z), 0.005);
+    if (scrollPosition < 915) {
+      camera.position.lerp(vec.set(mouse.x * 1, mouse.y * 1, camera.position.z), 0.005);
+    } else {
+      camera.position.x = 0.15;
+      camera.position.y = 0;
+      camera.position.z = 4;
+    }
   });
 };
 
 const Hero = () => {
-  // const [scrollPosition, setScrollPosition] = useState(0);
-  // const handleScroll = () => {
-  //   const position = window.pageYOffset;
-  //   setScrollPosition(position);
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll, { passive: true });
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
   return (
     <Main>
       <Canvas camera={{ position: [0, 0, 5] }}>
@@ -64,9 +71,9 @@ const Hero = () => {
           maxPolarAngle={Math.PI / 2}
         />
 
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={1} />
         <directionalLight
-          position={[-2, 5, 2]}
+          position={[-2, 5, 10]}
           intensity={1}
         />
         <Suspense fallback={null}>
