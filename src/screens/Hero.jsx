@@ -1,15 +1,15 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import * as THREE from 'three';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import styled from 'styled-components';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, ScrollControls } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
 import { Model } from '../components/LetterA';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Rig() {
+function Rig({ scrollPosition }) {
   const { camera, mouse } = useThree();
   const vec = new THREE.Vector3();
   return useFrame(() =>
@@ -18,6 +18,19 @@ function Rig() {
 }
 
 const Hero = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
     <Main>
       <Canvas camera={{ position: [0, 0, 5] }}>
@@ -28,17 +41,16 @@ const Hero = () => {
           minPolarAngle={Math.PI / 2}
           maxPolarAngle={Math.PI / 2}
         />
-        <ScrollControls>
-          <ambientLight intensity={0.5} />
-          <directionalLight
-            position={[-2, 5, 2]}
-            intensity={1}
-          />
-          <Suspense fallback={null}>
-            <Model />
-          </Suspense>
-          <Rig />
-        </ScrollControls>
+
+        <ambientLight intensity={0.5} />
+        <directionalLight
+          position={[-2, 5, 2]}
+          intensity={1}
+        />
+        <Suspense fallback={null}>
+          <Model />
+        </Suspense>
+        {scrollPosition < 900 && <Rig scrollPosition={scrollPosition} />}
       </Canvas>
     </Main>
   );
