@@ -63,7 +63,10 @@ const Rig = () => {
 const Hero = () => {
   return (
     <Main>
-      <Canvas camera={{ position: [0, 0, 5] }}>
+      <Canvas
+        camera={{ position: [0, 0, 5] }}
+        shadows
+      >
         <OrbitControls
           enableZoom={false}
           enablePan={false}
@@ -87,15 +90,14 @@ const Hero = () => {
 };
 
 const Main = styled.div`
-  background: rgb(57, 57, 62);
-  background: radial-gradient(
-    circle,
-    rgba(57, 57, 62, 1) 0%,
-    rgba(46, 44, 44, 1) 51%,
-    rgba(0, 0, 0, 1) 100%
+  background: rgb(84, 84, 84);
+  background: linear-gradient(
+    141deg,
+    rgba(40, 40, 40, 0.92) 0%,
+    rgba(10, 10, 10, 0.92) 49%,
+    rgba(5, 5, 5, 1) 100%
   );
   height: 100vh;
-  overflow: hidden;
 `;
 
 export default Hero;

@@ -28,6 +28,8 @@ export function Model(props) {
       dispose={null}
       ref={aRef}
     >
+      <directionalLight position={[1, 10, 15]} />
+      <ambientLight intensity={0.5} />
       <mesh
         geometry={nodes['3D_Text_-_A'].geometry}
         material={materials['Cold Spring']}
@@ -35,6 +37,23 @@ export function Model(props) {
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.1}
       />
+      <mesh
+        position-y={-2.5}
+        rotation-x={-Math.PI * 0.5}
+        scale={[13, 8, 1]}
+      >
+        <planeGeometry />
+        <meshBasicMaterial color="rgb(27, 27, 27)" />
+      </mesh>
+      <mesh
+        position-y={-2.4}
+        position-x={0.3}
+        rotation-x={-Math.PI * 0.5}
+        scale={[4.2, 1.5, 4]}
+      >
+        <planeGeometry />
+        <meshBasicMaterial color="rgb(1, 1, 1)" />
+      </mesh>
     </group>
   );
 }
