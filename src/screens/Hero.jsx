@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { Model } from '../components/LetterA';
+import '../styles/Homepage.styles.scss';
 gsap.registerPlugin(ScrollTrigger);
 
 const Rig = () => {
@@ -66,6 +67,7 @@ const Hero = () => {
       <Canvas
         camera={{ position: [0, 0, 5] }}
         shadows
+        className="canvas"
       >
         <OrbitControls
           enableZoom={false}

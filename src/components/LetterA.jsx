@@ -43,7 +43,7 @@ export function Model(props) {
         scale={[13, 8, 1]}
       >
         <planeGeometry />
-        <meshBasicMaterial color="rgb(27, 27, 27)" />
+        <meshBasicMaterial color="rgb(36, 36, 36)" />
       </mesh>
       <mesh
         position-y={-2.4}
