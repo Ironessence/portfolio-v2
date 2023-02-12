@@ -70,6 +70,7 @@ const Hero = () => {
         className="canvas"
         enablePan={true}
         enableZoom={true}
+        onTouchStart={(event) => event.preventDefault()}
       >
         <OrbitControls
           enableZoom={false}
