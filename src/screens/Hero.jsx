@@ -64,21 +64,7 @@ const Rig = () => {
 const Hero = () => {
   return (
     <Main>
-      <Canvas
-        camera={{ position: [0, 0, 5] }}
-        enablePan={true}
-        enableZoom={true}
-        onTouchStart={(event) => event.preventDefault()}
-      >
-        <OrbitControls
-          enableZoom={true}
-          enablePan={true}
-          enableRotate={true}
-          minPolarAngle={Math.PI / 2}
-          maxPolarAngle={Math.PI / 2}
-          onTouchStart={(event) => event.preventDefault()}
-        />
-
+      <Canvas camera={{ position: [0, 0, 5] }}>
         <ambientLight intensity={1} />
         <directionalLight
           position={[-2, 5, 10]}
