@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import styled from 'styled-components';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+
 import { Model } from '../components/LetterA';
 import '../styles/Homepage.styles.scss';
 gsap.registerPlugin(ScrollTrigger);
