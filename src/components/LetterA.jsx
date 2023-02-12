@@ -52,7 +52,7 @@ export function Model(props) {
         scale={[4.2, 1.5, 4]}
       >
         <planeGeometry />
-        <meshBasicMaterial color="rgb(15, 15, 15)" />
+        <meshBasicMaterial color="rgb(18, 18, 18)" />
       </mesh>
     </group>
   );

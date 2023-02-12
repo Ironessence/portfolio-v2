@@ -4,9 +4,9 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import styled from 'styled-components';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-
 import { Model } from '../components/LetterA';
 import '../styles/Homepage.styles.scss';
+import { Sparkles } from '@react-three/drei';
 gsap.registerPlugin(ScrollTrigger);
 
 const Rig = () => {
@@ -52,11 +52,10 @@ const Rig = () => {
 
   return useFrame(() => {
     if (scrollPosition < 915) {
-      camera.position.lerp(vec.set(mouse.x * 1, mouse.y * 1, camera.position.z), 0.005);
+      camera.position.lerp(vec.set(mouse.x * 1, mouse.y * 1, camera.position.z), 0.002);
+      camera.lookAt(0, 0, 0);
     } else {
-      camera.position.x = 0.15;
-      camera.position.y = 0;
-      camera.position.z = 4;
+      camera.lookAt(0, 0, 0);
     }
   });
 };
@@ -65,6 +64,13 @@ const Hero = () => {
   return (
     <Main>
       <Canvas camera={{ position: [0, 0, 5] }}>
+        <Sparkles
+          speed={0.2}
+          opacity={0.4}
+          color={'rgb(55, 55, 55)'}
+          size={5}
+          scale={5}
+        />
         <ambientLight intensity={1} />
         <directionalLight
           position={[-2, 5, 10]}
