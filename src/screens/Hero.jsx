@@ -78,6 +78,7 @@ const Hero = () => {
           enableRotate={false}
           minPolarAngle={Math.PI / 2}
           maxPolarAngle={Math.PI / 2}
+          onTouchStart={(event) => event.preventDefault()}
         />
 
         <ambientLight intensity={1} />
