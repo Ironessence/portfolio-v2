@@ -66,16 +66,14 @@ const Hero = () => {
     <Main>
       <Canvas
         camera={{ position: [0, 0, 5] }}
-        shadows
-        className="canvas"
         enablePan={true}
         enableZoom={true}
         onTouchStart={(event) => event.preventDefault()}
       >
         <OrbitControls
-          enableZoom={false}
-          enablePan={false}
-          enableRotate={false}
+          enableZoom={true}
+          enablePan={true}
+          enableRotate={true}
           minPolarAngle={Math.PI / 2}
           maxPolarAngle={Math.PI / 2}
           onTouchStart={(event) => event.preventDefault()}
