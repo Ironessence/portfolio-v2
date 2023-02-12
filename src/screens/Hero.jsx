@@ -40,7 +40,6 @@ const Rig = () => {
           start: 'top top',
           end: '+=2000',
           scrub: true,
-          markers: true,
         },
       });
     }, '.hero');
@@ -66,8 +65,8 @@ const Hero = () => {
       <Canvas camera={{ position: [0, 0, 5] }}>
         <Sparkles
           speed={0.2}
-          opacity={0.4}
-          color={'rgb(55, 55, 55)'}
+          opacity={0.3}
+          color={'rgb(65, 65, 65)'}
           size={5}
           scale={5}
         />
