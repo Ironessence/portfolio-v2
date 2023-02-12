@@ -68,6 +68,8 @@ const Hero = () => {
         camera={{ position: [0, 0, 5] }}
         shadows
         className="canvas"
+        enablePan={true}
+        enableZoom={true}
       >
         <OrbitControls
           enableZoom={false}
