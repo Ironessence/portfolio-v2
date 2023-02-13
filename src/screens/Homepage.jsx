@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import Hero from './Hero';
 import '../styles/Homepage.styles.scss';
+import Projects from './Projects';
 gsap.registerPlugin(ScrollTrigger);
 
 const Homepage = () => {
+  const projectsRef = useRef(null);
   useEffect(() => {
     let ctx = gsap.context(() => {
       //INSIDE CONTEXT >
@@ -29,6 +31,7 @@ const Homepage = () => {
       <div className="hero">
         <Hero />
       </div>
+      <Projects projectsRef={projectsRef} />
     </div>
   );
 };

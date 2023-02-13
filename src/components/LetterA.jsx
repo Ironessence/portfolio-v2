@@ -38,7 +38,7 @@ export function Model(props) {
       <mesh
         geometry={nodes['3D_Text_-_A'].geometry}
         material={materials['Cold Spring']}
-        position={[-1.85, -2.5, -1]}
+        position={[-1.85, -2, -1]}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.1}
         castShadow

@@ -65,6 +65,7 @@ const Hero = () => {
       <Canvas
         shadows
         camera={{ position: [0, 0, 5] }}
+        className={'test'}
       >
         <Sparkles
           speed={0.2}
