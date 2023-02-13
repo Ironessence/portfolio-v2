@@ -62,18 +62,16 @@ const Rig = () => {
 const Hero = () => {
   return (
     <Main>
-      <Canvas camera={{ position: [0, 0, 5] }}>
+      <Canvas
+        shadows
+        camera={{ position: [0, 0, 5] }}
+      >
         <Sparkles
           speed={0.2}
           opacity={0.3}
           color={'rgb(65, 65, 65)'}
           size={5}
           scale={5}
-        />
-        <ambientLight intensity={1} />
-        <directionalLight
-          position={[-2, 5, 10]}
-          intensity={1}
         />
         <Suspense fallback={null}>
           <Model />

@@ -5,6 +5,7 @@ import gsap from 'gsap';
 export function Model(props) {
   const { nodes, materials } = useGLTF('/letterA.gltf');
   const aRef = useRef(null);
+
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       //INSIDE CONTEXT >
@@ -28,31 +29,28 @@ export function Model(props) {
       dispose={null}
       ref={aRef}
     >
-      <directionalLight position={[1, 10, 15]} />
-      <ambientLight intensity={0.5} />
+      <directionalLight
+        castShadow
+        position={[0, 5, 7]}
+        intensity={1}
+      />
+      <ambientLight intensity={0.7} />
       <mesh
         geometry={nodes['3D_Text_-_A'].geometry}
         material={materials['Cold Spring']}
-        position={[-1.85, -2, -1]}
+        position={[-1.85, -2.5, -1]}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.1}
+        castShadow
       />
       <mesh
+        receiveShadow
         position-y={-2.5}
         rotation-x={-Math.PI * 0.5}
         scale={[13, 8, 1]}
       >
         <planeGeometry />
-        <meshBasicMaterial color="rgb(45, 45, 45)" />
-      </mesh>
-      <mesh
-        position-y={-2.4}
-        position-x={0.3}
-        rotation-x={-Math.PI * 0.5}
-        scale={[4.2, 1.5, 4]}
-      >
-        <planeGeometry />
-        <meshBasicMaterial color="rgb(18, 18, 18)" />
+        <meshStandardMaterial color="rgb(45, 45, 45)" />
       </mesh>
     </group>
   );
