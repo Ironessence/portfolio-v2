@@ -15,7 +15,7 @@ const Projects = () => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: '500 top',
-          end: '+=2200',
+          end: '+=100',
           scrub: true,
         },
       });
