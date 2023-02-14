@@ -1,8 +1,15 @@
 .homepage {
-  height: 700vh;
+  background: rgb(84, 84, 84);
+  background: linear-gradient(
+    141deg,
+    rgba(40, 40, 40, 0.92) 0%,
+    rgba(10, 10, 10, 0.92) 49%,
+    rgba(5, 5, 5, 1) 100%
+  );
   overflow-x: hidden;
+  height: 700vh;
 }
 
-.test {
-  z-index: 99;
+.canvas {
+  z-index: 1;
 }

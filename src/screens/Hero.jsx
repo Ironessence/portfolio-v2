@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useLayoutEffect, useState } from 'react';
+import React, { Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -65,7 +65,7 @@ const Hero = () => {
       <Canvas
         shadows
         camera={{ position: [0, 0, 5] }}
-        className={'test'}
+        className={'canvas'}
       >
         <Sparkles
           speed={0.2}
@@ -84,14 +84,8 @@ const Hero = () => {
 };
 
 const Main = styled.div`
-  background: rgb(84, 84, 84);
-  background: linear-gradient(
-    141deg,
-    rgba(40, 40, 40, 0.92) 0%,
-    rgba(10, 10, 10, 0.92) 49%,
-    rgba(5, 5, 5, 1) 100%
-  );
   height: 100vh;
+  z-index: 2;
 `;
 
 export default Hero;

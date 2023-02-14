@@ -7,7 +7,6 @@ import Projects from './Projects';
 gsap.registerPlugin(ScrollTrigger);
 
 const Homepage = () => {
-  const projectsRef = useRef(null);
   useEffect(() => {
     let ctx = gsap.context(() => {
       //INSIDE CONTEXT >
@@ -15,7 +14,7 @@ const Homepage = () => {
         scrollTrigger: {
           trigger: '.hero',
           start: 'top top',
-          end: '+=2000',
+          end: '+=2200',
           scrub: true,
           pin: true,
           anticipatePin: 1,
@@ -30,8 +29,8 @@ const Homepage = () => {
     <div className="homepage">
       <div className="hero">
         <Hero />
+        <Projects />
       </div>
-      <Projects projectsRef={projectsRef} />
     </div>
   );
 };
