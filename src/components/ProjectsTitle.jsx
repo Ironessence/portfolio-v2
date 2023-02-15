@@ -33,7 +33,7 @@ const ProjectsTitle = () => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: '500 top',
-          end: '+=1500',
+          end: '+=1200',
           scrub: true,
         },
       });
@@ -54,7 +54,7 @@ const ProjectsTitle = () => {
 const Container = styled.div`
   width: 100%;
   opacity: 0;
-  margin-top: -70vh;
+  margin-top: -50vh;
 `;
 
 const TitleWrapper = styled.div``;

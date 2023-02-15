@@ -1,7 +1,7 @@
 const projectsData = [
   {
     key: 14124124,
-    id: '0104',
+    id: 1,
     name: 'MaxiParty',
     intro:
       'A presentation website for a company that specializes in kids parties and activities. The website needed to be playful, easy to navigate through and contain slight animations.',
@@ -19,7 +19,7 @@ const projectsData = [
   },
   {
     key: 1882323,
-    id: '0204',
+    id: 2,
     name: 'MadsolAgro',
     intro:
       'A fully functional online store that features dynamic category and products creation, user/admin secure login, admin dashboard, customers and orders tracking and more.',
@@ -45,7 +45,7 @@ const projectsData = [
   },
   {
     key: 213124122,
-    id: '0304',
+    id: 3,
     name: 'CryptoTrackR',
     intro:
       'One of the very first projects I have ever built, an api consuming website that displays cryptocurrencies and their prices along with some news about each one.',
