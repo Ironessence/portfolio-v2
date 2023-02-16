@@ -1,31 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import '../styles/ProjectCard.styles.scss';
 
-const ProjectCard = ({ selectedProject, onClick, title, headerImage, id }) => {
-  const containerClassName =
-    'pc-container' +
-    (selectedProject !== null && selectedProject.id === id ? ' big-container' : '');
-
-  const titleClassName =
-    'pc-title' + (selectedProject !== null && selectedProject.id === id ? ' big-title' : '');
-
-  useEffect(() => {
-    if (selectedProject !== null && selectedProject.id === id) {
-      console.log('IS');
-    } else {
-      console.log('IS NOT');
-      console.log(selectedProject !== null);
-      console.log(selectedProject);
-      console.log(id);
-    }
-  }, [id, selectedProject]);
-
+const ProjectCard = ({ onClick, title, headerImage, isSelected }) => {
   return (
     <div
-      className={containerClassName}
+      className={isSelected ? 'big-container' : 'pc-container'}
       onClick={onClick}
     >
-      <h1 className={titleClassName}>{title.toUpperCase()}</h1>
+      <h1 className={'pc-title'}>{title.toUpperCase()}</h1>
       <div className="pc-cover">
         <h3 className="pc-details">Details</h3>
       </div>

@@ -16,6 +16,11 @@
   animation: fadein 500ms;
   width: 90vw;
   align-self: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  transition: width 0.7s ease;
 }
 
 .pc-title {
