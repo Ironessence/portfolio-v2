@@ -1,10 +1,29 @@
-import React, { useCallback, useState } from 'react';
+import gsap from 'gsap';
+import React, { useCallback, useEffect, useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import '../styles/Homepage.styles.scss';
 import projectsData from '../utils/projectsData';
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      //INSIDE CONTEXT >
+      gsap.timeline().to('.projects-container', {
+        opacity: 1,
+        duration: 2,
+        scrollTrigger: {
+          trigger: '.projects-container',
+          start: '100 top',
+          end: '+=1200',
+          scrub: true,
+        },
+      });
+    }, '.homepage');
+    //Clean-Up
+    return () => ctx.revert();
+  }, []);
 
   const handlePressSelectedProject = useCallback((projectId) => {
     setSelectedProject(projectId);
@@ -20,6 +39,7 @@ const Projects = () => {
           key={project.key}
           id={project.id}
           isSelected={project.id === selectedProject}
+          skills={project.skills}
         />
       ))}
     </div>

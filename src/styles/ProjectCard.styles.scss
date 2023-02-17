@@ -1,14 +1,25 @@
 .pc-container {
-  width: 50vw;
+  width: 40%;
   position: relative;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
   cursor: pointer;
-  transition: width 0.7s ease;
-  &:hover .pc-cover {
-    height: calc(100% - 60px);
-    opacity: 1;
+  transition: 0.7s ease;
+  &:hover .pc-title {
+    transform: scale(1.02);
+  }
+  &:hover .divider {
+    width: 100%;
+  }
+  &:hover .skill {
+    color: rgba(73, 192, 228, 0.753);
+  }
+  &:hover .pc-header-image {
+    transform: scale(1.02);
+  }
+  @media only screen and (max-width: 550px) {
+    width: 90%;
   }
 }
 
@@ -24,50 +35,64 @@
 }
 
 .pc-title {
-  order: 2;
-  margin-top: -30px;
   color: white;
   text-shadow: 2px 2px 2px black;
   font-size: 4em;
-  margin-left: -50px;
+  margin-bottom: 10px;
   letter-spacing: 2px;
   z-index: 3;
   transition: 0.7s ease all;
+  @media only screen and (max-width: 550px) {
+    font-size: 2.5em;
+  }
 }
 
 .big-title {
-  margin-top: -50%;
   animation: fadein 700ms;
   margin-left: 200px;
-}
-
-.pc-details {
-  color: white;
-  text-align: center;
-}
-
-.pc-cover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: rgba(83, 233, 239, 0.2);
-  box-shadow: 0 8px 16px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4.5px);
-  -webkit-backdrop-filter: blur(4.5px);
-  border-radius: 10px;
-  z-index: 2;
-  width: 100%;
-  height: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: 0.7s ease all;
 }
 
 .pc-header-image {
   width: 100%;
   object-fit: cover;
-  order: 1;
-  border-radius: 10px;
+  transition: 0.7s ease all;
+}
+
+.divider {
+  width: 70%;
+  height: 1px;
+  background-color: white;
+  margin-bottom: 20px;
+  transition: 1.2s ease-in-out;
+}
+
+.skills-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  line-height: 5px;
+  vertical-align: top;
+  row-gap: 0px;
+}
+
+.skill-chip {
+}
+
+.skill {
+  color: rgba(255, 255, 255, 0.589);
+  transition: 0.7s ease all;
+  font-size: 1.2em;
+  @media only screen and (max-width: 550px) {
+    font-size: 1em;
+  }
+}
+
+.pc-number {
+  font-size: 14px;
+  color: white;
+  margin-bottom: -30px;
+  letter-spacing: 2px;
+  @media only screen and (max-width: 600px) {
+    margin-bottom: -20px;
+  }
 }

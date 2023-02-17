@@ -28,7 +28,7 @@ const ProjectsTitle = () => {
     let ctx = gsap.context(() => {
       //INSIDE CONTEXT >
       gsap.timeline().to(projectsTitleRef.current, {
-        x: 200,
+        x: '5%',
         duration: 1.5,
         scrollTrigger: {
           trigger: containerRef.current,
@@ -62,8 +62,17 @@ const TitleWrapper = styled.div``;
 const Title = styled.h1`
   color: white;
   transform: translateX(100%);
-  font-size: 8em;
+  font-size: 12em;
   letter-spacing: 2px;
+  white-space: nowrap;
+  @media only screen and (max-width: 1200px) {
+    font-size: 8em;
+  }
+  @media only screen and (max-width: 550px) {
+    font-size: 5em;
+    white-space: normal;
+    margin-bottom: -100px;
+  }
 `;
 
 export default ProjectsTitle;
