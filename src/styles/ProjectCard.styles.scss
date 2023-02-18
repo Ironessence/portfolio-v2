@@ -23,18 +23,6 @@
   }
 }
 
-.big-container {
-  animation: fadein 500ms;
-  width: 80vw;
-  align-self: center;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
-  transition: width 0.7s ease;
-  border: 1px solid white;
-}
-
 .pc-title {
   color: white;
   text-shadow: 2px 2px 2px black;
@@ -76,9 +64,6 @@
   row-gap: 0px;
 }
 
-.skill-chip {
-}
-
 .skill {
   color: rgba(255, 255, 255, 0.589);
   transition: 0.7s ease all;
@@ -103,28 +88,4 @@
   color: white;
   letter-spacing: 1px;
   font-weight: 400;
-  padding: 20px;
-}
-
-.pc-phone-img-container {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-}
-
-.pc-image {
-  width: 90%;
-}
-
-.pc-image-phone {
-  width: 300px;
-  border-radius: 20px;
-}
-
-.pc-end-text {
-  font-size: 1.5rem;
-  color: white;
-  letter-spacing: 1px;
-  font-weight: 400;
-  padding: 20px;
 }
