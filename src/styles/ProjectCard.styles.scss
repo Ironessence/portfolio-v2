@@ -23,6 +23,17 @@
   }
 }
 
+.selected-container {
+  width: 80%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  cursor: pointer;
+  animation: fadein 700ms;
+  transition: 0.7s ease all;
+}
+
 .pc-title {
   color: white;
   text-shadow: 2px 2px 2px black;

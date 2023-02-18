@@ -1,13 +1,12 @@
 import gsap from 'gsap';
 import React, { useCallback, useEffect, useState } from 'react';
-import Modal from '../components/Modal';
+
 import ProjectCard from '../components/ProjectCard';
 import '../styles/Homepage.styles.scss';
 import projectsData from '../utils/projectsData';
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -27,18 +26,20 @@ const Projects = () => {
     return () => ctx.revert();
   }, []);
 
-  const handlePressSelectedProject = useCallback((projectId) => {
-    setSelectedProject(projectId);
-    setModalOpen(true);
-  }, []);
-
-  const closeModal = () => {
-    setModalOpen(!modalOpen);
-  };
+  //Function to open/close a project card
+  const handlePressSelectedProject = useCallback(
+    (projectId) => {
+      if (selectedProject !== null && selectedProject === projectId) {
+        setSelectedProject(null);
+      } else {
+        setSelectedProject(projectId);
+      }
+    },
+    [selectedProject],
+  );
 
   return (
     <div className="projects-container">
-      {modalOpen && <Modal onClose={closeModal} />}
       {projectsData.map((project) => (
         <ProjectCard
           onClick={() => handlePressSelectedProject(project.id)}

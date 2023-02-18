@@ -4,7 +4,7 @@ import '../styles/ProjectCard.styles.scss';
 const ProjectCard = ({ onClick, title, headerImage, isSelected, skills, id, intro }) => {
   return (
     <div
-      className="pc-container"
+      className={!isSelected ? 'pc-container' : 'selected-container'}
       onClick={onClick}
     >
       {/* ID */}
