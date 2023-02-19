@@ -1,6 +1,5 @@
 import gsap from 'gsap';
 import React, { useCallback, useEffect, useState } from 'react';
-
 import ProjectCard from '../components/ProjectCard';
 import '../styles/Homepage.styles.scss';
 import projectsData from '../utils/projectsData';
