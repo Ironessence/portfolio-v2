@@ -50,14 +50,6 @@ const Projects = () => {
           isSelected={project.id === selectedProject}
           skills={project.skills}
           intro={project.intro}
-          image1={project.image1}
-          image1width={project.image1width}
-          image2={project.image2}
-          image3={project.image3}
-          image3width={project.image3width}
-          image4={project.image4}
-          endText={project.endText}
-          link={project.link}
         />
       ))}
     </div>

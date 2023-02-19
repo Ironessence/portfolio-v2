@@ -1,11 +1,13 @@
+import { motion } from 'framer-motion';
 import React from 'react';
 import '../styles/ProjectCard.styles.scss';
 
-const ProjectCard = ({ onClick, title, headerImage, isSelected, skills, id, intro }) => {
+const ProjectCard = ({ title, headerImage, isSelected, skills, id, intro }) => {
   return (
-    <div
-      className={!isSelected ? 'pc-container' : 'selected-container'}
-      onClick={onClick}
+    <motion.div
+      className="pc-container"
+      initial={{ y: -50, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
     >
       {/* ID */}
       {id && <h4 className="pc-number">{`0${id}  /  03`}</h4>}
@@ -31,8 +33,23 @@ const ProjectCard = ({ onClick, title, headerImage, isSelected, skills, id, intr
         />
       )}
       {/* INTRO */}
-      {intro && <h3 className="pc-intro">{intro}</h3>}
-    </div>
+
+      {isSelected && intro && (
+        <motion.h3
+          key="intro-text"
+          className="pc-intro"
+          initial={{ x: -20, opacity: 0 }}
+          animate={{
+            y: 0,
+            opacity: 1,
+            transition: { duration: 0.7, delay: 0.6, stiffness: 400 },
+          }}
+          exit={{ x: -20, opacity: 0 }}
+        >
+          {intro}
+        </motion.h3>
+      )}
+    </motion.div>
   );
 };
 
