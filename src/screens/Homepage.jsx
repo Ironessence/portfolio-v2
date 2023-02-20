@@ -6,6 +6,7 @@ import '../styles/Homepage.styles.scss';
 
 import ProjectsTitle from '../components/ProjectsTitle';
 import Projects from './Projects';
+import Skills from './Skills';
 gsap.registerPlugin(ScrollTrigger);
 
 const Homepage = () => {
@@ -33,6 +34,7 @@ const Homepage = () => {
         <Hero />
         <ProjectsTitle />
         <Projects />
+        <Skills />
       </div>
     </div>
   );
