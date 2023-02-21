@@ -1,21 +1,14 @@
 .homepage {
-  background: rgb(84, 84, 84);
-  background: linear-gradient(
-    141deg,
-    rgba(40, 40, 40, 0.92) 0%,
-    rgba(10, 10, 10, 0.92) 49%,
-    rgba(5, 5, 5, 1) 100%
-  );
-  //background-image: url('../assets/bg-test.jpg');
-  // background-size: 220%;
-  background-repeat: no-repeat;
+  background: rgb(7, 7, 7);
   overflow-x: hidden;
   height: 700vh;
 }
 
 //This hero needs to have higher height than the Hero component in order for it not to behave strangely (project cards)
 .hero {
-  height: 200vh;
+  // background-image: url('../assets/bg-test.jpg');
+  // background-size: 220%;
+  // background-repeat: no-repeat;
 }
 
 .canvas {
