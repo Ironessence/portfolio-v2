@@ -1,14 +1,13 @@
-
 import './App.css';
 import Navigation from './navigation/Navigation';
-import Homepage from './screens/Homepage';
+import Homepage from '../src/sections/main/Homepage';
 
 function App() {
   return (
     <>
-   <Navigation />
-   <Homepage />
-   </>
+      <Navigation />
+      <Homepage />
+    </>
   );
 }
 

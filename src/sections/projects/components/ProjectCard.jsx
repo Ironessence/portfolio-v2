@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import React from 'react';
-import '../styles/ProjectCard.styles.scss';
+import '../../../styles/ProjectCard.styles.scss';
 
 const ProjectCard = ({ title, headerImage, isSelected, skills, id, intro }) => {
   return (
@@ -8,6 +8,7 @@ const ProjectCard = ({ title, headerImage, isSelected, skills, id, intro }) => {
       className="pc-container"
       initial={{ y: -50, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true }}
     >
       {/* ID */}
       {id && <h4 className="pc-number">{`0${id}  /  03`}</h4>}
@@ -27,7 +28,7 @@ const ProjectCard = ({ title, headerImage, isSelected, skills, id, intro }) => {
       <div className="divider" />
       {headerImage && (
         <img
-          src={require(`../assets/${headerImage}`)}
+          src={require(`../../../assets/${headerImage}`)}
           alt="maxiparty-1"
           className="pc-header-image"
         />

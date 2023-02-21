@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import Hero from './Hero';
-import '../styles/Homepage.styles.scss';
+import Hero from '../hero/Hero';
+import '../../styles/Homepage.styles.scss';
+import ProjectsTitle from '../projects/components/ProjectsTitle';
 
-import ProjectsTitle from '../components/ProjectsTitle';
-import Projects from './Projects';
-import Skills from './Skills';
+import Projects from '../projects/Projects';
+import Skills from '../skills/Skills';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Homepage = () => {

@@ -1,0 +1,28 @@
+.projects-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  position: relative;
+}
+
+.projects-container > :nth-child(odd) {
+  align-self: flex-start;
+  margin-left: 10%;
+  @media only screen and (max-width: 550px) {
+    align-self: center;
+    margin-left: 0%;
+  }
+}
+
+.projects-container > :nth-child(even) {
+  align-self: flex-end;
+  margin-right: 10%;
+  @media only screen and (max-width: 550px) {
+    align-self: center;
+    margin-right: 0%;
+  }
+}

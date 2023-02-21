@@ -4,8 +4,8 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import styled from 'styled-components';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Model } from '../components/LetterA';
-import '../styles/Homepage.styles.scss';
+import { Model } from '../../components/LetterA';
+import '../../styles/Homepage.styles.scss';
 import { Sparkles } from '@react-three/drei';
 gsap.registerPlugin(ScrollTrigger);
 
