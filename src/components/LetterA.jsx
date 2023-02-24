@@ -43,14 +43,15 @@ export function Model(props) {
         scale={0.1}
         castShadow
       />
+
       <mesh
         receiveShadow
-        position-y={-2.5}
+        position-y={-5.5}
         rotation-x={-Math.PI * 0.5}
         scale={[13, 8, 1]}
       >
-        <planeGeometry />
-        <meshStandardMaterial color="rgb(26, 31, 38)" />
+        <sphereGeometry />
+        <meshPhongMaterial color="rgb(12, 14, 24)" />
       </mesh>
     </group>
   );
