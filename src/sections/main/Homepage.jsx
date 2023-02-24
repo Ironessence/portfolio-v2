@@ -37,15 +37,12 @@ const Homepage = () => {
       gsap.timeline().to(imgRef.current, {
         scale: 3,
         x: 500,
+        rotateZ: 5,
         duration: 1.5,
-
         scrollTrigger: {
           trigger: imgRef.current,
           start: 'top top',
           scrub: true,
-          // pin: true,
-          // anticipatePin: 1,
-          markers: true,
         },
       });
     }, '.homepage');
@@ -74,6 +71,10 @@ const Img = styled.img`
   top: 0;
   width: 100%;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 66%);
+  filter: brightness(80%);
+  @media only screen and (max-width: 1000px) {
+    width: 200%;
+  }
 `;
 
 export default Homepage;
