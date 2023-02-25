@@ -1,33 +1,66 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import SkillsTitle from './components/SkillsTitle';
 import { skillsList } from '../../utils/skillsList';
 import Skill from './components/Skill';
 
 const Skills = () => {
+  const container = {
+    hidden: { opacity: 0, y: -200 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.4,
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: -200,
+    },
+  };
+
+  const animatedSkill = {
+    hidden: { opacity: 0, y: 100 },
+    show: { opacity: 1, y: 0 },
+  };
+
   return (
-    <Container>
-      <SkillsTitle baseVelocity={-5}>My skills</SkillsTitle>
-      <SkillsTitle baseVelocity={5}>& Expertise</SkillsTitle>
-      <SkillsContainer>
-        <MainSkill>
-          <Icon
-            src={require('../../assets/react.png')}
-            alt="react-native"
-          />
-          <SkillTitle>React Native</SkillTitle>
-        </MainSkill>
-        <ExtraSkills>
-          {skillsList.map((skill) => (
-            <Skill
-              skill={skill.skill}
-              icon={skill.icon}
+    <AnimatePresence>
+      <Container>
+        <SkillsTitle baseVelocity={-5}>My skills</SkillsTitle>
+        <SkillsTitle baseVelocity={5}>& Expertise</SkillsTitle>
+        <SkillsContainer>
+          <MainSkill
+            initial={{ opacity: 0, y: -200 }}
+            whileInView={{ opacity: 1, y: 0, transition: { duration: 0.3 } }}
+            viewport={{ once: true }}
+          >
+            <Icon
+              src={require('../../assets/react.png')}
+              alt="react-native"
             />
-          ))}
-        </ExtraSkills>
-      </SkillsContainer>
-    </Container>
+            <SkillTitle>React Native</SkillTitle>
+          </MainSkill>
+          <ExtraSkills
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            {skillsList.map((skill) => (
+              <Skill
+                skill={skill.skill}
+                icon={skill.icon}
+                animation={animatedSkill}
+              />
+            ))}
+          </ExtraSkills>
+        </SkillsContainer>
+      </Container>
+    </AnimatePresence>
   );
 };
 
@@ -50,7 +83,7 @@ const SkillsContainer = styled.div`
   }
 `;
 
-const MainSkill = styled.div`
+const MainSkill = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,7 +104,7 @@ const SkillTitle = styled.h1`
   text-align: center;
 `;
 
-const ExtraSkills = styled.div`
+const ExtraSkills = styled(motion.div)`
   width: 100%;
   margin-left: auto;
   margin-right: auto;
