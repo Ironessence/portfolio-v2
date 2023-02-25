@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import '../../styles/Homepage.styles.scss';
 
 const AboutMe = () => {
@@ -23,27 +23,45 @@ const AboutMe = () => {
       </FirstSection>
       <SecondSection>
         <Text>
+          I'm constantly looking for ways to further <Highlight>improve</Highlight> anything I work
+          on, and I generally enjoy bringing <Highlight>new ideas</Highlight> to the table. I'm also
+          very keen on writing <Highlight>clean code</Highlight> and planning beforehand.
+          <br />
+          <Highlight>Communication</Highlight> is key - I believe - in order to be able to take any
+          idea and turn it into reality, exactly as it was imagined. Or...{' '}
+          <Highlight>better</Highlight>?
+        </Text>
+      </SecondSection>
+      <ThirdSection>
+        <Text>
           Besides software engineering, I know a thing or two about <Highlight>branding</Highlight>,
           creating a powerful social media presence via <Highlight>marketing</Highlight>, and I'm
           also keen on <Highlight>photo & video editing</Highlight>.
         </Text>
-      </SecondSection>
+      </ThirdSection>
     </Container>
   );
 };
 
+const section = css`
+  width: 30%;
+  line-height: 4vh;
+  background-color: rgba(68, 68, 120, 0.3);
+  padding: 120px;
+`;
+
 const Container = styled.div`
   width: 100%;
-  height: 10vh;
   margin-top: 10vh;
   display: flex;
   flex-direction: column;
+  gap: 50px;
 `;
 
 const TitleBg = styled.div`
   background-color: rgba(68, 68, 120, 0.3);
   padding: 100px;
-  clip-path: polygon(0 39%, 100% 0%, 100% 45%, 0 84%);
+  clip-path: polygon(0 32%, 100% 0, 100% 50%, 0 85%);
 `;
 
 const Title = styled(motion.h1)`
@@ -56,24 +74,21 @@ const Title = styled(motion.h1)`
 `;
 
 const FirstSection = styled(motion.div)`
-  width: 30%;
-  height: 500px;
+  ${section}
   margin-left: 10%;
-  line-height: 4vh;
-  background-color: rgba(68, 68, 120, 0.3);
-  padding: 120px;
 `;
 
 const SecondSection = styled(motion.div)`
-  width: 30%;
-  height: 500px;
+  ${section}
   margin-left: auto;
   margin-right: 10%;
-  margin-top: 5vh;
-  line-height: 4vh;
-  background-color: rgba(68, 68, 120, 0.3);
-  padding: 120px;
 `;
+
+const ThirdSection = styled(motion.div)`
+  ${section}
+  margin-left: 10%;
+`;
+
 const Text = styled(motion.h3)`
   color: white;
   font-weight: 500;

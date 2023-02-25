@@ -9,6 +9,7 @@ import Projects from '../projects/Projects';
 import Skills from '../skills/Skills';
 import styled from 'styled-components';
 import AboutMe from '../about/AboutMe';
+import Contact from '../contact/Contact';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -63,6 +64,7 @@ const Homepage = () => {
         <Projects />
         <Skills />
         <AboutMe />
+        <Contact />
       </div>
     </div>
   );
