@@ -10,9 +10,9 @@ const Navigation = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuItems = [
-    { title: '01 _ABOUT ME' },
-    { title: '02 _PROJECTS' },
-    { title: '03 _SKILLS' },
+    { title: '01 _PROJECTS' },
+    { title: '02 _SKILLS' },
+    { title: '03 _ABOUT_ME' },
     { title: '04 _CONTACT' },
   ];
 

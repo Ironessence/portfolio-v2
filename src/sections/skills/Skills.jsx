@@ -66,7 +66,7 @@ const Skills = () => {
 
 const Container = styled(motion.div)`
   width: 100%;
-  margin-top: 20vh;
+  margin-top: 30vh;
 `;
 
 const SkillsContainer = styled.div`

@@ -4,7 +4,10 @@ import styled from 'styled-components';
 
 const Skill = ({ skill, icon, animation }) => {
   return (
-    <Container variants={animation}>
+    <Container
+      variants={animation}
+      viewport={{ once: true }}
+    >
       <Icon src={require(`../../../assets/${icon}`)} />
       <Title>{skill}</Title>
     </Container>

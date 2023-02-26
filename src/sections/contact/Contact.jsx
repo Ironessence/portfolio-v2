@@ -51,6 +51,14 @@ const Title = styled.h1`
   font-weight: 700;
   text-align: end;
   margin-right: 10%;
+  @media only screen and (max-width: 1000px) {
+    text-align: center;
+    font-size: 5em;
+    margin-right: 0px;
+  }
+  @media only screen and (max-width: 500px) {
+    font-size: 4em;
+  }
 `;
 
 const CommsContainer = styled(motion.div)`
@@ -59,6 +67,10 @@ const CommsContainer = styled(motion.div)`
   flex-wrap: wrap;
   align-items: center;
   padding: 200px 0px 200px 0px;
+  @media only screen and (max-width: 1000px) {
+    flex-direction: column;
+    padding: 50px 10px 50px 10px;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -73,6 +85,9 @@ const Text = styled.h2`
   font-size: 2em;
   font-weight: 500;
   letter-spacing: 1px;
+  @media only screen and (max-width: 500px) {
+    font-size: 1.5em;
+  }
 `;
 
 const Icon = styled.img`

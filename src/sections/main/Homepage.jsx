@@ -73,11 +73,17 @@ const Homepage = () => {
 const Img = styled.img`
   position: absolute;
   top: 0;
-  width: 100%;
+  width: 150%;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 66%);
   filter: brightness(80%);
   @media only screen and (max-width: 1000px) {
-    width: 200%;
+    width: 300%;
+  }
+  @media only screen and (max-width: 700px) {
+    width: 250%;
+  }
+  @media only screen and (max-width: 500px) {
+    width: 350%;
   }
 `;
 

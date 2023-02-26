@@ -48,6 +48,11 @@ const section = css`
   line-height: 4vh;
   background-color: rgba(68, 68, 120, 0.3);
   padding: 120px;
+  @media only screen and (max-width: 1000px) {
+    align-self: center;
+    width: 80%;
+    padding: 20px;
+  }
 `;
 
 const Container = styled.div`
@@ -56,12 +61,19 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
+  @media only screen and (max-width: 1000px) {
+    justify-content: center;
+  }
 `;
 
 const TitleBg = styled.div`
   background-color: rgba(68, 68, 120, 0.3);
   padding: 100px;
   clip-path: polygon(0 32%, 100% 0, 100% 50%, 0 85%);
+  @media only screen and (max-width: 700px) {
+    clip-path: polygon(0 14%, 100% 0, 100% 86%, 0% 100%);
+    padding: 0px;
+  }
 `;
 
 const Title = styled(motion.h1)`
@@ -71,22 +83,40 @@ const Title = styled(motion.h1)`
   color: white;
   margin-left: 100px;
   text-shadow: 3px 3px 3px black;
+  @media only screen and (max-width: 1000px) {
+    margin-left: 0px;
+    font-size: 5em;
+    text-align: center;
+  }
+  @media only screen and (max-width: 500px) {
+    font-size: 4em;
+  }
 `;
 
 const FirstSection = styled(motion.div)`
   ${section}
   margin-left: 10%;
+  @media only screen and (max-width: 1000px) {
+    margin-left: 0px;
+  }
 `;
 
 const SecondSection = styled(motion.div)`
   ${section}
   margin-left: auto;
   margin-right: 10%;
+  @media only screen and (max-width: 1000px) {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
 `;
 
 const ThirdSection = styled(motion.div)`
   ${section}
   margin-left: 10%;
+  @media only screen and (max-width: 1000px) {
+    margin-left: 0px;
+  }
 `;
 
 const Text = styled(motion.h3)`

@@ -65,8 +65,14 @@ const Title = styled.h1`
   font-size: 12em;
   letter-spacing: 2px;
   white-space: nowrap;
+  @media only screen and (max-width: 1500px) {
+    font-size: 8em;
+  }
   @media only screen and (max-width: 1200px) {
     font-size: 8em;
+  }
+  @media only screen and (max-width: 1000px) {
+    font-size: 5em;
   }
   @media only screen and (max-width: 550px) {
     font-size: 5em;
