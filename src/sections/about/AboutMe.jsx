@@ -1,11 +1,18 @@
 import { motion } from 'framer-motion';
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import '../../styles/Homepage.styles.scss';
+import { useRefContext } from '../../utils/context';
 
 const AboutMe = () => {
+  const { aboutRef } = useRefContext();
+
+  useEffect(() => {
+    console.log('About ref:', aboutRef.current.offsetTop);
+  }, [aboutRef]);
+
   return (
-    <Container>
+    <Container ref={aboutRef}>
       <TitleBg>
         <Title>About me</Title>
       </TitleBg>

@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
 import SkillsTitle from './components/SkillsTitle';
 import { skillsList } from '../../utils/skillsList';
 import Skill from './components/Skill';
+import { useRefContext } from '../../utils/context';
 
 const Skills = () => {
+  const { skillsRef } = useRefContext();
+
+  useEffect(() => {
+    console.log('Skills ref:', skillsRef.current.offsetTop);
+  }, [skillsRef]);
+
   const container = {
     hidden: { opacity: 0, y: -200 },
     show: {
@@ -32,7 +39,7 @@ const Skills = () => {
       <Container>
         <SkillsTitle baseVelocity={-5}>My skills</SkillsTitle>
         <SkillsTitle baseVelocity={5}>& Expertise</SkillsTitle>
-        <SkillsContainer>
+        <SkillsContainer ref={skillsRef}>
           <MainSkill
             initial={{ opacity: 0, y: -200 }}
             whileInView={{ opacity: 1, y: 0, transition: { duration: 0.3 } }}

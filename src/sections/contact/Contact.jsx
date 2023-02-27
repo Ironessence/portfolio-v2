@@ -1,11 +1,18 @@
 import { motion } from 'framer-motion';
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import '../../styles/Homepage.styles.scss';
+import { useRefContext } from '../../utils/context';
 
 const Contact = () => {
+  const { contactRef } = useRefContext();
+
+  useEffect(() => {
+    console.log('Contact ref:', contactRef.current.offsetTop);
+  }, [contactRef]);
+
   return (
-    <Container>
+    <Container ref={contactRef}>
       <Title>Let's Talk</Title>
       <CommsContainer
         initial={{ backgroundColor: 'black' }}

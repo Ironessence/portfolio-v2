@@ -4,16 +4,20 @@ import menuClosedIcon from '../assets/menu-closed.png';
 import menuOpenIcon from '../assets/menu-open.png';
 import { AnimatePresence, motion } from 'framer-motion';
 import MenuItem from './components/MenuItem';
+import { useRefContext } from '../utils/context';
 
 const Navigation = () => {
   const [showNav, setShowNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { projectsRef, skillsRef, aboutRef, contactRef } = useRefContext();
+
   const menuItems = [
-    { title: '01 _PROJECTS' },
-    { title: '02 _SKILLS' },
-    { title: '03 _ABOUT_ME' },
-    { title: '04 _CONTACT' },
+    { title: '01 _PROJECTS', scrollRef: projectsRef },
+    { title: '02 _SKILLS', scrollRef: skillsRef, diff: 400 },
+    { title: '03 _ABOUT_ME', scrollRef: aboutRef },
+    { title: '04 _CONTACT', scrollRef: contactRef },
   ];
 
   const animatedMenu = {
@@ -109,6 +113,8 @@ const Navigation = () => {
                     <MenuItem
                       animatedMenuItem={animatedMenuItem}
                       title={item.title}
+                      scrollRef={item.scrollRef}
+                      diff={item.diff}
                     />
                   ))}
                 </motion.div>

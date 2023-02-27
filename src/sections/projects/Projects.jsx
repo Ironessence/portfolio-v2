@@ -2,11 +2,18 @@ import gsap from 'gsap';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import '../../styles/Projects.styles.scss';
+import { useRefContext } from '../../utils/context';
 import projectsData from '../../utils/projectsData';
 import ProjectCard from './components/ProjectCard';
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
+
+  const { projectsRef } = useRefContext();
+
+  useEffect(() => {
+    console.log('Proj ref:', projectsRef.current.offsetTop);
+  }, [projectsRef]);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -39,7 +46,10 @@ const Projects = () => {
   );
 
   return (
-    <div className="projects-container">
+    <div
+      className="projects-container"
+      ref={projectsRef}
+    >
       {projectsData.map((project) => (
         <ProjectCard
           onClick={() => handlePressSelectedProject(project.id)}
