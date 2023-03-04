@@ -19,7 +19,7 @@ const Skills = () => {
       opacity: 1,
       y: 0,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.08,
         delayChildren: 0.4,
       },
     },

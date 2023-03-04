@@ -1,12 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const MenuItem = ({ animatedMenuItem, title, scrollRef, diff }) => {
+const MenuItem = ({ animatedMenuItem, title, scrollRef, diff, setMenuOpen }) => {
   const handleScroll = (value) => {
     window.scrollTo({
       top: diff ? value.current.offsetTop + 2200 - diff : value.current.offsetTop + 2200,
       behavior: 'smooth',
     });
+    setMenuOpen(false);
   };
 
   return (

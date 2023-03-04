@@ -43,7 +43,7 @@ const Navigation = () => {
 
   const controlNavbar = () => {
     if (typeof window !== 'undefined') {
-      if (window.scrollY > lastScrollY && window.scrollY > 0) {
+      if (window.scrollY > 0 && window.scrollY > lastScrollY) {
         setShowNav(false);
         setMenuOpen(false);
       } else {
@@ -115,6 +115,7 @@ const Navigation = () => {
                       title={item.title}
                       scrollRef={item.scrollRef}
                       diff={item.diff}
+                      setMenuOpen={setMenuOpen}
                     />
                   ))}
                 </motion.div>

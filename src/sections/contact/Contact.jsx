@@ -13,7 +13,13 @@ const Contact = () => {
 
   return (
     <Container ref={contactRef}>
-      <Title>Let's Talk</Title>
+      <Title
+        initial={{ x: 400, rotateX: 90, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1, rotateX: 0, transition: { duration: 0.9 } }}
+        viewport={{ once: true }}
+      >
+        Let's Talk
+      </Title>
       <CommsContainer
         initial={{ backgroundColor: 'black' }}
         whileInView={{
@@ -52,7 +58,7 @@ const Container = styled.div`
   margin-top: 20vh;
 `;
 
-const Title = styled.h1`
+const Title = styled(motion.h1)`
   color: white;
   font-size: 8em;
   font-weight: 700;

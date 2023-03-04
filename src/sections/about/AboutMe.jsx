@@ -14,9 +14,19 @@ const AboutMe = () => {
   return (
     <Container ref={aboutRef}>
       <TitleBg>
-        <Title>About me</Title>
+        <Title
+          initial={{ x: -400, rotateY: 50, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1, rotateY: 0, transition: { duration: 0.7 } }}
+          viewport={{ once: true }}
+        >
+          About me
+        </Title>
       </TitleBg>
-      <FirstSection>
+      <FirstSection
+        initial={{ x: -400, rotateX: 90, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1, rotateX: 0, transition: { duration: 0.7 } }}
+        viewport={{ once: true }}
+      >
         <Text>
           Hi there! Glad you've made it this far! <br />
           I'm Alex, a <Highlight>creative</Highlight> and <Highlight>passionate</Highlight> software
@@ -28,7 +38,11 @@ const AboutMe = () => {
           this in my work.
         </Text>
       </FirstSection>
-      <SecondSection>
+      <SecondSection
+        initial={{ x: 400, rotateX: 90, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1, rotateX: 0, transition: { duration: 0.7 } }}
+        viewport={{ once: true }}
+      >
         <Text>
           I'm constantly looking for ways to further <Highlight>improve</Highlight> anything I work
           on, and I generally enjoy bringing <Highlight>new ideas</Highlight> to the table. I'm also
@@ -39,7 +53,11 @@ const AboutMe = () => {
           <Highlight>better</Highlight>?
         </Text>
       </SecondSection>
-      <ThirdSection>
+      <ThirdSection
+        initial={{ x: -400, rotateX: 90, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1, rotateX: 0, transition: { duration: 0.7 } }}
+        viewport={{ once: true }}
+      >
         <Text>
           Besides software engineering, I know a thing or two about <Highlight>branding</Highlight>,
           creating a powerful social media presence via <Highlight>marketing</Highlight>, and I'm
