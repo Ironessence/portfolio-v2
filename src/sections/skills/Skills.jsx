@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
 import SkillsTitle from './components/SkillsTitle';
 import { skillsList } from '../../utils/skillsList';
-import Skill from './components/Skill';
 import { useRefContext } from '../../utils/context';
+import BallCanvas from './components/BallCanvas';
 
 const Skills = () => {
   const { skillsRef } = useRefContext();
@@ -40,17 +40,6 @@ const Skills = () => {
         <SkillsTitle baseVelocity={-5}>My skills</SkillsTitle>
         <SkillsTitle baseVelocity={5}>& Expertise</SkillsTitle>
         <SkillsContainer ref={skillsRef}>
-          <MainSkill
-            initial={{ opacity: 0, y: -200 }}
-            whileInView={{ opacity: 1, y: 0, transition: { duration: 0.3 } }}
-            viewport={{ once: true }}
-          >
-            <Icon
-              src={require('../../assets/react.png')}
-              alt="react-native"
-            />
-            <SkillTitle>React Native</SkillTitle>
-          </MainSkill>
           <ExtraSkills
             variants={container}
             initial="hidden"
@@ -58,11 +47,13 @@ const Skills = () => {
             viewport={{ once: true }}
           >
             {skillsList.map((skill) => (
-              <Skill
-                skill={skill.skill}
-                icon={skill.icon}
-                animation={animatedSkill}
-              />
+              <SkillWrap key={skill.skill}>
+                <BallCanvas
+                  icon={skill.icon}
+                  animation={animatedSkill}
+                />
+                <SkillText>{skill.skill}</SkillText>
+              </SkillWrap>
             ))}
           </ExtraSkills>
         </SkillsContainer>
@@ -90,36 +81,31 @@ const SkillsContainer = styled.div`
   }
 `;
 
-const MainSkill = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(60, 60, 60, 0.6);
-  width: 300px;
-  border-radius: 10px;
-  flex: 1;
-  padding: 20px;
-`;
-
-const Icon = styled.img`
-  width: 200px;
-`;
-
-const SkillTitle = styled.h1`
-  color: white;
-  text-align: center;
-`;
-
 const ExtraSkills = styled(motion.div)`
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 70px;
   flex: 2;
   justify-content: center;
+`;
+
+const SkillWrap = styled(motion.div)`
+  aspect-ratio: 1;
+  width: 150px;
+  height: 150px;
+  flex-direction: column;
+  display: flex;
+`;
+
+const SkillText = styled(motion.h2)`
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 1px;
 `;
 
 export default Skills;

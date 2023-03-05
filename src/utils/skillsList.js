@@ -11,8 +11,9 @@ export const skillsList = [
     skill: 'Javascript',
     icon: 'javascript.png',
   },
+  { skill: 'Typescript', icon: 'typescript.png' },
   {
-    skill: 'React.JS',
+    skill: 'React',
     icon: 'react.png',
   },
   {
