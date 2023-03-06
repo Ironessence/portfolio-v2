@@ -1,5 +1,6 @@
 import gsap from 'gsap';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import '../../styles/Projects.styles.scss';
 import { useRefContext } from '../../utils/context';
@@ -7,13 +8,9 @@ import projectsData from '../../utils/projectsData';
 import ProjectCard from './components/ProjectCard';
 
 const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const navigate = useNavigate();
 
   const { projectsRef } = useRefContext();
-
-  useEffect(() => {
-    console.log('Proj ref:', projectsRef.current.offsetTop);
-  }, [projectsRef]);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -34,16 +31,12 @@ const Projects = () => {
   }, []);
 
   //Function to open/close a project card
-  const handlePressSelectedProject = useCallback(
-    (projectId) => {
-      if (selectedProject !== null && selectedProject === projectId) {
-        setSelectedProject(null);
-      } else {
-        setSelectedProject(projectId);
-      }
-    },
-    [selectedProject],
-  );
+  const handlePressSelectedProject = (project) => {
+    console.log('PROJECT IN FUNCTION:', project);
+    navigate(`/${project.name}`, {
+      state: { project },
+    });
+  };
 
   return (
     <div
@@ -52,12 +45,11 @@ const Projects = () => {
     >
       {projectsData.map((project) => (
         <ProjectCard
-          onClick={() => handlePressSelectedProject(project.id)}
+          onClick={() => handlePressSelectedProject(project)}
           title={project.name}
           headerImage={project.startImage}
           key={project.key}
           id={project.id}
-          isSelected={project.id === selectedProject}
           skills={project.skills}
           intro={project.intro}
         />
