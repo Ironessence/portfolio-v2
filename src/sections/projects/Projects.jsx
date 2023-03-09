@@ -1,6 +1,5 @@
 import gsap from 'gsap';
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import '../../styles/Projects.styles.scss';
 import { useRefContext } from '../../utils/context';
@@ -8,8 +7,6 @@ import projectsData from '../../utils/projectsData';
 import ProjectCard from './components/ProjectCard';
 
 const Projects = () => {
-  const navigate = useNavigate();
-
   const { projectsRef } = useRefContext();
 
   useEffect(() => {
@@ -30,12 +27,12 @@ const Projects = () => {
     return () => ctx.revert();
   }, []);
 
-  //Function to open/close a project card
-  const handlePressSelectedProject = (project) => {
-    console.log('PROJECT IN FUNCTION:', project);
-    navigate(`/${project.name}`, {
-      state: { project },
-    });
+  //Open project in a new tab and pass project in localStorage
+  const navigateExternal = (target, options) => {
+    if (options.state) {
+      localStorage.setItem('state', JSON.stringify(options.state));
+    }
+    window.open(target, '_blank', 'noreferrer');
   };
 
   return (
@@ -45,13 +42,12 @@ const Projects = () => {
     >
       {projectsData.map((project) => (
         <ProjectCard
-          onClick={() => handlePressSelectedProject(project)}
+          onClick={() => navigateExternal(`/${project.name}`, { state: { project } })}
           title={project.name}
           headerImage={project.startImage}
           key={project.key}
           id={project.id}
           skills={project.skills}
-          intro={project.intro}
         />
       ))}
     </div>

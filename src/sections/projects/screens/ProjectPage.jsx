@@ -1,24 +1,44 @@
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import backIcon from '../../../assets/back-icon.png';
 
 const ProjectPage = () => {
-  const {
-    state: { project },
-  } = useLocation();
-  const navigate = useNavigate();
+  const [state, setState] = useState(JSON.parse(localStorage.getItem('state')));
+  const location = useLocation();
+  const project = state.project;
+
+  useEffect(() => {
+    localStorage.removeItem('state');
+  }, []);
+
+  useEffect(() => {
+    if (location.state) {
+      setState(location.state);
+    }
+  }, [location]);
 
   return (
     <Container>
-      <Header>
-        <BackButton
-          src={backIcon}
-          alt="icon-back"
-          onClick={() => navigate('/')}
-        />
-      </Header>
       <Title>{project.name.toUpperCase()}</Title>
+      <HeaderImage
+        src={require(`../../../assets/${project.startImage}`)}
+        alt="header"
+      />
+      <Text>{project.text1}</Text>
+      <Section>
+        <Picture1 src={require(`../../../assets/${project.image2}`)} />
+        <Text>{project.text2}</Text>
+      </Section>
+      <Section>
+        <Picture2 src={require(`../../../assets/${project.image3}`)} />
+        <Text>{project.text3}</Text>
+      </Section>
+      {project.image4 && project.text4 && (
+        <Section>
+          <Picture2 src={require(`../../../assets/${project.image4}`)} />
+          <Text>{project.text4}</Text>
+        </Section>
+      )}
     </Container>
   );
 };
@@ -36,26 +56,6 @@ const Container = styled.div`
   );
 `;
 
-const Header = styled.div`
-  width: 100%;
-  height: 80px;
-  background-color: transparent;
-  display: flex;
-  position: fixed;
-`;
-
-const BackButton = styled.img`
-  width: 50px;
-  height: 50px;
-  margin-left: 20px;
-  margin-top: 20px;
-  cursor: pointer;
-  transition: 0.4s ease all;
-  &:hover {
-    transform: rotateZ(-15deg);
-  }
-`;
-
 const Title = styled.h1`
   color: white;
   text-shadow: 2px 2px 2px black;
@@ -64,6 +64,41 @@ const Title = styled.h1`
   text-align: center;
   margin-top: 90px;
   font-weight: 700;
+`;
+
+const HeaderImage = styled.img`
+  width: 90%;
+  height: 40vh;
+  margin-left: 50%;
+  transform: translateX(-50%);
+`;
+
+const Text = styled.h3`
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  font-size: 2em;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 90px;
+  font-weight: 400;
+`;
+
+const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Picture1 = styled.img`
+  width: 80%;
+  height: 40vh;
+`;
+
+const Picture2 = styled.img`
+  width: 80%;
+  height: 40vh;
 `;
 
 export default ProjectPage;

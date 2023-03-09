@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import '../../../styles/ProjectCard.styles.scss';
 
-const ProjectCard = ({ title, headerImage, isSelected, skills, id, intro, onClick }) => {
+const ProjectCard = ({ title, headerImage, skills, id, onClick }) => {
   return (
     <motion.div
       className="pc-container"
@@ -35,22 +35,6 @@ const ProjectCard = ({ title, headerImage, isSelected, skills, id, intro, onClic
         />
       )}
       {/* INTRO */}
-
-      {isSelected && intro && (
-        <motion.h3
-          key="intro-text"
-          className="pc-intro"
-          initial={{ x: -20, opacity: 0 }}
-          animate={{
-            y: 0,
-            opacity: 1,
-            transition: { duration: 0.7, delay: 0.6, stiffness: 400 },
-          }}
-          exit={{ x: -20, opacity: 0 }}
-        >
-          {intro}
-        </motion.h3>
-      )}
     </motion.div>
   );
 };
