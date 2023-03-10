@@ -23,7 +23,6 @@ const projectsData = [
     key: 1882323,
     id: 2,
     name: 'madsolagro',
-
     startImage: 'mad-1.jpg',
     image1: 'mad-2.jpg',
     skills: [
@@ -53,9 +52,9 @@ const projectsData = [
     id: 3,
     name: 'cryptotrackr',
     startImage: 'cl-1.jpg',
-    image2: 'cl-2.jpg',
+    image1: 'cl-2.jpg',
     skills: ['HTML', 'CSS', 'Javascript', 'React.JS'],
-    image3: 'cl-3.jpg',
+    image2: 'cl-3.jpg',
     text1:
       'One of the very first projects I have ever built, an api consuming website that displays cryptocurrencies and their prices along with some news about each one.',
     text2: 'text2',

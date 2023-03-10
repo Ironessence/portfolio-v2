@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
@@ -19,25 +20,119 @@ const ProjectPage = () => {
 
   return (
     <Container>
-      <Title>{project.name.toUpperCase()}</Title>
+      <Title
+        initial={{ x: -300, opacity: 0, rotateY: 90, skewX: 20 }}
+        whileInView={{ x: 0, opacity: 1, rotateY: 0, skewX: 0, transition: { duration: 0.7 } }}
+        viewport={{ once: true }}
+      >
+        {project.name.toUpperCase()}
+      </Title>
       <HeaderImage
         src={require(`../../../assets/${project.startImage}`)}
         alt="header"
+        initial={{ x: 300, opacity: 0, rotateX: 90 }}
+        whileInView={{ x: 0, opacity: 1, rotateX: 0, transition: { duration: 0.7, delay: 0.4 } }}
+        viewport={{ once: true }}
       />
-      <Text>{project.text1}</Text>
-      <Section>
-        <Picture1 src={require(`../../../assets/${project.image2}`)} />
-        <Text>{project.text2}</Text>
-      </Section>
-      <Section>
-        <Picture2 src={require(`../../../assets/${project.image3}`)} />
-        <Text>{project.text3}</Text>
-      </Section>
-      {project.image4 && project.text4 && (
+      <Text
+        initial={{ x: -300, opacity: 0, rotateY: 90 }}
+        whileInView={{ x: 0, opacity: 1, rotateY: 0, transition: { duration: 0.7, delay: 0.8 } }}
+        viewport={{ once: true }}
+      >
+        {project.text1}
+      </Text>
+      {project.image1 && project.text2 && !project.image1width ? (
         <Section>
-          <Picture2 src={require(`../../../assets/${project.image4}`)} />
-          <Text>{project.text4}</Text>
+          <Picture
+            src={require(`../../../assets/${project.image1}`)}
+            initial={{ x: 300, opacity: 0, rotateX: 90 }}
+            whileInView={{ x: 0, opacity: 1, rotateX: 0, transition: { duration: 0.7, delay: 1 } }}
+            viewport={{ once: true }}
+          />
+          <Text
+            initial={{ x: -300, opacity: 0, rotateY: 90 }}
+            whileInView={{ x: 0, opacity: 1, rotateY: 0, transition: { duration: 0.7 } }}
+            viewport={{ once: true }}
+          >
+            {project.text2}
+          </Text>
         </Section>
+      ) : (
+        <MobileSection>
+          <MobilePicture
+            src={require(`../../../assets/${project.image1}`)}
+            initial={{ x: 300, opacity: 0, rotateX: 90 }}
+            whileInView={{ x: 0, opacity: 1, rotateX: 0, transition: { duration: 0.7, delay: 1 } }}
+            viewport={{ once: true }}
+            width={project.image1width}
+          />
+          <MobileText
+            initial={{ x: -300, opacity: 0, rotateY: 90 }}
+            whileInView={{ x: 0, opacity: 1, rotateY: 0, transition: { duration: 0.7 } }}
+            viewport={{ once: true }}
+          >
+            {project.text2}
+          </MobileText>
+        </MobileSection>
+      )}
+      {project.image2 && project.text3 && (
+        <Section>
+          <Picture
+            src={require(`../../../assets/${project.image2}`)}
+            initial={{ x: 300, opacity: 0, rotateX: 90 }}
+            whileInView={{ x: 0, opacity: 1, rotateX: 0, transition: { duration: 0.7 } }}
+            viewport={{ once: true }}
+          />
+          <Text
+            initial={{ x: -300, opacity: 0, rotateY: 90 }}
+            whileInView={{ x: 0, opacity: 1, rotateY: 0, transition: { duration: 0.7 } }}
+            viewport={{ once: true }}
+          >
+            {project.text3}
+          </Text>
+        </Section>
+      )}
+      {project.image3 && project.text4 && !project.image3width ? (
+        <Section>
+          <Picture
+            src={require(`../../../assets/${project.image3}`)}
+            initial={{ x: 300, opacity: 0, rotateX: 90 }}
+            whileInView={{ x: 0, opacity: 1, rotateX: 0, transition: { duration: 0.7 } }}
+            viewport={{ once: true }}
+          />
+          <Text
+            initial={{ x: -300, opacity: 0, rotateY: 90 }}
+            whileInView={{ x: 0, opacity: 1, rotateY: 0, transition: { duration: 0.7 } }}
+            viewport={{ once: true }}
+          >
+            {project.text4}
+          </Text>
+        </Section>
+      ) : (
+        <MobileSection>
+          <MobilePicture
+            src={require(`../../../assets/${project.image3}`)}
+            initial={{ x: 300, opacity: 0, rotateX: 90 }}
+            whileInView={{ x: 0, opacity: 1, rotateX: 0, transition: { duration: 0.7, delay: 1 } }}
+            viewport={{ once: true }}
+            width={project.image3width}
+          />
+          <MobileText
+            initial={{ x: -300, opacity: 0, rotateY: 90 }}
+            whileInView={{ x: 0, opacity: 1, rotateY: 0, transition: { duration: 0.7 } }}
+            viewport={{ once: true }}
+          >
+            {project.text4}
+          </MobileText>
+        </MobileSection>
+      )}
+      {project.image4 && (
+        <Picture
+          src={require(`../../../assets/${project.image4}`)}
+          initial={{ x: 300, opacity: 0, rotateX: 90 }}
+          whileInView={{ x: 0, opacity: 1, rotateX: 0, transition: { duration: 0.7 } }}
+          viewport={{ once: true }}
+        />
       )}
     </Container>
   );
@@ -45,7 +140,6 @@ const ProjectPage = () => {
 
 const Container = styled.div`
   width: 100%;
-  height: 500vh;
   overflow-x: hidden;
   background: rgb(3, 3, 3);
   background: linear-gradient(
@@ -54,9 +148,13 @@ const Container = styled.div`
     rgba(10, 10, 10, 0.9150201612903226) 49%,
     rgba(40, 40, 40, 0.9279233870967742) 0%
   );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 100px;
 `;
 
-const Title = styled.h1`
+const Title = styled(motion.h1)`
   color: white;
   text-shadow: 2px 2px 2px black;
   font-size: 80px;
@@ -66,14 +164,14 @@ const Title = styled.h1`
   font-weight: 700;
 `;
 
-const HeaderImage = styled.img`
+const HeaderImage = styled(motion.img)`
+  aspect-ratio: 16:9;
   width: 90%;
-  height: 40vh;
-  margin-left: 50%;
-  transform: translateX(-50%);
+
+  
 `;
 
-const Text = styled.h3`
+const Text = styled(motion.h3)`
   color: white;
   text-shadow: 2px 2px 2px black;
   font-size: 2em;
@@ -81,6 +179,7 @@ const Text = styled.h3`
   text-align: center;
   margin-top: 90px;
   font-weight: 400;
+  margin-bottom: 5vh;
 `;
 
 const Section = styled.div`
@@ -91,14 +190,36 @@ const Section = styled.div`
   justify-content: center;
 `;
 
-const Picture1 = styled.img`
-  width: 80%;
-  height: 40vh;
+const Picture = styled(motion.img)`
+  aspect-ratio: 16:9;
+  width: ${(props) => (props.width ? props.width : '80%')}
+  
 `;
 
-const Picture2 = styled.img`
-  width: 80%;
-  height: 40vh;
+//FOR SMALLER PICTURE
+
+const MobileSection = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 5vh;
+`;
+
+const MobilePicture = styled(motion.img)`
+  object-fit: contain;
+  width: ${(props) => (props.width ? props.width : '80%')};
+  margin-left: ${(props) => (props.width ? '20%' : '0')};
+`;
+
+const MobileText = styled(motion.h3)`
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  font-size: 2em;
+  letter-spacing: 1px;
+  text-align: center;
+  font-weight: 400;
+  width: 50%;
 `;
 
 export default ProjectPage;
